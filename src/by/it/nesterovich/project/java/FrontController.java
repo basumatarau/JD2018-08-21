@@ -39,6 +39,14 @@ public class FrontController extends HttpServlet {
                 view = Actions.LOGOUT.jsp;
                 break;
             }
+            case "CreateFilm": {
+                view = Actions.CREATEFILM.jsp;
+                break;
+            }
+            case "ListFilm": {
+                view = Actions.LISTFILM.jsp;
+                break;
+            }
         }
         getServletContext().getRequestDispatcher(view).forward(req, resp);
     }

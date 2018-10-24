@@ -21,7 +21,17 @@ public enum Actions {
         {
             this.jsp = "/logout.jsp";
         }
-    };
+    },
+    CREATEFILM{
+        {
+            this.jsp = "/createfilm.jsp";
+        }
+    },
+    LISTFILM{
+        {
+            this.jsp = "/listfilm.jsp";
+        }
+    }    ;
 
     public String jsp = "/error.jsp";
 
