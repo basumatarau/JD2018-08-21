@@ -41,7 +41,10 @@ public class FrontController extends HttpServlet {
                 view = Actions.LISTAD.JSP;
                 break;
         }
-        getServletContext().getRequestDispatcher(view).forward(req,resp);
+        resp.setHeader("Cache-Control", "private, no-store, no-cache, must-revalidate");
 
+        getServletContext().getRequestDispatcher(view).forward(req,resp);
     }
+
+
 }
