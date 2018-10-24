@@ -20,6 +20,8 @@ public class FrontController extends HttpServlet {
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String command = req.getParameter("command");
         String view = "/error.jsp";
+        //resp.setHeader("Cache-Control", "no-store, no-cache");
+
         switch (command) {
             case "Index": {
                 view = Actions.INDEX.jsp;
