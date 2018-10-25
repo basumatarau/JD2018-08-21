@@ -1,9 +1,7 @@
 <html>
 <%@ include file="include/head.htm" %>
 <body>
-    <div class="container">
 <%@ include file="include/menu.htm" %>
-<p>INDEX: ${message}</p>
-</div>
+<p> Cmd CreateForm: ${message}</p>
 </body>
 </html>
