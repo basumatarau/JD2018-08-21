@@ -5,6 +5,9 @@ enum Action {
     INDEX {{
         cmd = new CmdIndex();
     }},
+    RESET {{
+        cmd = new CmdReset();
+    }},
     LOGIN {{
         cmd = new CmdLogin();
     }},

@@ -3,7 +3,7 @@
 <body>
     <div class="container">
     <%@ include file="include/menu.htm" %>
-    <p>INDEX: ${message}</p>
+    <p>Cmd Logout: ${message}</p>
     </div>
 </body>
 </html>

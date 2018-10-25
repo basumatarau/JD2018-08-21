@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CmdCreateAd extends Cmd{
 
     @Override
-    public Cmd execute(HttpServletRequest req, HttpServletResponse resp) {
+    public Cmd execute(HttpServletRequest req, HttpServletResponse resp)  {
         return null;
     }
 }

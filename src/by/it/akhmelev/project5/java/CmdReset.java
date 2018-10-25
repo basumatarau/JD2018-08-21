@@ -8,24 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CmdLogin extends Cmd {
+public class CmdReset extends Cmd {
 
     @Override
     public Cmd execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-        req.setAttribute("user","kuku");
-        if (req.getMethod().equalsIgnoreCase("post")) {
-            req.setAttribute("user","kuku2");
-            String login = req.getParameter("login");
-            String password = req.getParameter("password");
-            Dao dao = Dao.getDao();
-            String where = String.format(" WHERE Login='%s' AND PASSWORD='%s'",login,password);
-            List<User> users = dao.user.getAll(where);
-            if (users.size()>0) {
-                req.setAttribute("user",users.get(0));
-            }
-
-        }
-        return null;
+            Dao.getDao().reset();
+            return Action.SIGNUP.cmd;
     }
 
     public static void main(String[] args) throws SQLException {
