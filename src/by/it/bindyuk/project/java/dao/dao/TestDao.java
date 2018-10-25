@@ -23,7 +23,7 @@ public class TestDao {
     private Role role = new Role(0, "test");
     private Route route = new Route(0, "New York");
     private Ticket ticket = new Ticket(0, "TEST",
-            1, 2, new Timestamp(66666666),2);
+            1, 2, new Timestamp(666666669999L),2);
 
     //==================================================================================================================
     //Тест операций CRUD для USER

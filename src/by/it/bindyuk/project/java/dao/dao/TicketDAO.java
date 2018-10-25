@@ -2,6 +2,8 @@ package by.it.bindyuk.project.java.dao.dao;
 
 import by.it.bindyuk.jd03_02.ConnectionCreator;
 import by.it.bindyuk.jd03_03.beans.Ticket;
+import by.it.bindyuk.jd03_03.dao.AbstractDao;
+import by.it.bindyuk.jd03_03.dao.InterfaceDAO;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,8 +20,8 @@ public class TicketDAO extends AbstractDao implements InterfaceDAO<Ticket> {
         String sql = String.format("INSERT INTO `tickets`(`transport`, " +
                         "`routes_id from`, `routes_id to`, `data`, " +
                         "`users_id`) " +
-                        "VALUES ('%s','%d','%d'," +
-                        "'%s','%d')",
+                        "VALUES ('%s',%d,%d," +
+                        "'%s',%d)",
                 ticket.getTransport(),
                 ticket.getRoutesIdFrom(),
                 ticket.getRoutesIdTo(),
@@ -49,10 +51,10 @@ public class TicketDAO extends AbstractDao implements InterfaceDAO<Ticket> {
     public boolean update(Ticket ticket) throws SQLException {
         String sql = String.format("UPDATE `tickets` SET " +
                         "`transport`='%s'," +
-                        "`routes_id from`='%d'," +
-                        "`routes_id to`='%d'," +
+                        "`routes_id from`=%d," +
+                        "`routes_id to`=%d," +
                         "`data`='%s'," +
-                        "`users_id`='%d'" +
+                        "`users_id`=%d" +
                         "WHERE `id`=%d",
                 ticket.getTransport(),
                 ticket.getRoutesIdFrom(),
