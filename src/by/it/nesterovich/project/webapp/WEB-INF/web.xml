@@ -15,13 +15,4 @@
         <url-pattern>/do</url-pattern>
     </servlet-mapping>
 
-    <filter>
-        <filter-name>servletCacheControl</filter-name>
-        <filter-class>by.it.nesterovich.project.java.CacheControl</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>servletCacheControl</filter-name>
-        <url-pattern>/do</url-pattern>
-    </filter-mapping>
-
 </web-app>
