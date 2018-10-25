@@ -1,4 +1,4 @@
-package by.it.bindyuk.jd03_03.dao;
+package by.it.bindyuk.project.java.dao.dao;
 
 import by.it.bindyuk.jd03_03.beans.Role;
 import by.it.bindyuk.jd03_03.beans.Route;
@@ -9,7 +9,8 @@ import org.junit.Test;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class TestDao {
 
@@ -22,7 +23,7 @@ public class TestDao {
     private Role role = new Role(0, "test");
     private Route route = new Route(0, "New York");
     private Ticket ticket = new Ticket(0, "TEST",
-            1, 2, new Timestamp(666666669999L),2);
+            1, 2, new Timestamp(66666666),2);
 
     //==================================================================================================================
     //Тест операций CRUD для USER

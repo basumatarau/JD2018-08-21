@@ -1,4 +1,4 @@
-package by.it.bindyuk.jd03_03.dao;
+package by.it.bindyuk.project.java.dao.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -127,7 +127,7 @@ public class Reset {
             //==========================================================================================================
             //билеты
             statement.executeUpdate("INSERT INTO `bindyuk`.`tickets` (`id`, `transport`, `routes_id from`, `routes_id to`, `data`, `users_id`)" +
-                    " VALUES (DEFAULT, 'train', 1, 2, 0, 2);");
+                    " VALUES (DEFAULT, 'train', 1, 2, '1540816800', 2);");
 
         } catch (SQLException e) {
             e.printStackTrace();

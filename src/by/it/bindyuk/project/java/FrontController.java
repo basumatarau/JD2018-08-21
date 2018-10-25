@@ -8,6 +8,13 @@ import java.io.IOException;
 
 public class FrontController extends HttpServlet {
 
+    private AcitonResolver actionResolver;
+
+    @Override
+    public void init() throws ServletException {
+        actionResolver = new AcitonResolver();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         process(req, resp);
@@ -19,32 +26,23 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String command = req.getParameter("command");
-
-        String view = "/error.jsp";
-        switch (command) {
-            case "Index":
-                view = Actions.INDEX.jsp;
-                break;
-            case "Login":
-                view = Actions.LOGIN.jsp;
-                break;
-            case "Logout":
-                view = Actions.LOGOUT.jsp;
-                break;
-            case "SignUp":
-                view = Actions.SIGNUP.jsp;
-                break;
-            case "Ticket":
-                view = Actions.TICKET.jsp;
-                break;
-            case "Registration":
-                view = Actions.REGISTRATION.jsp;
-                break;
+        resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        Action action = actionResolver.resolve(req);
+        Cmd command = action.cmd;
+        Cmd nextCommand;
+        String view = action.getjsp();
+        try {
+            nextCommand = command.execute(req, resp);
+        } catch (Exception e) {
+            nextCommand = null;
+            view = Action.ERROR.getjsp();
         }
 
-        //кэшируем вывод сервлета
-        resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); //или нужно что-то сделать с request'ом ?
-        getServletContext().getRequestDispatcher(view).forward(req, resp);
+        if (nextCommand == null || nextCommand == command) {
+            getServletContext().getRequestDispatcher(view).forward(req, resp);
+        }
+        else
+            resp.sendRedirect("do?command="+nextCommand.toString());
+        }
     }
-}
+

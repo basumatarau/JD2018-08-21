@@ -1,15 +1,14 @@
-package by.it.bindyuk.jd03_03.dao;
+package by.it.bindyuk.project.java.dao.dao;
 
 import by.it.bindyuk.jd03_03.beans.Role;
-import by.it.bindyuk.jd03_03.beans.Ticket;
 import by.it.bindyuk.jd03_03.beans.User;
 
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.List;
 
 public class Runner {
 
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) {
         Dao dao = Dao.getDao();
         try {
             User user = new User(0, "test",
@@ -23,9 +22,8 @@ public class Runner {
             List<Role> all1 = dao.role.getAll();
             System.out.println(all1);
             dao.reset();
-            dao.ticket.create(new Ticket(0,"samokat",2,3,new Timestamp(1540771200000L),2));
 
-        } catch (SQLException e) {
+        } catch (SQLException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
