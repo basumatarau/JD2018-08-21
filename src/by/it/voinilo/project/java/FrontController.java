@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
 public class FrontController extends HttpServlet {
 
 
@@ -43,12 +44,10 @@ public class FrontController extends HttpServlet {
 
 
         }
+        response.setHeader("Cache-Control", "no-store, no-cache");
 
         getServletContext().getRequestDispatcher(view).forward(req, response);
     }
 
-    @Override
-    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    }
 }
