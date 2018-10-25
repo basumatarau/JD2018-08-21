@@ -20,23 +20,20 @@ public class FrontController extends HttpServlet {
         process(req, resp);
     }
 
+    private static ActionsResolver actionsResolver;
+
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        String command = req.getParameter("command");
-        String view = "/error.jsp";
-        switch (command) {
-            case "Index":
-                view = Action.INDEX.jsp;
-                break;
-            case "Login":
-                view = Action.LOGIN.jsp;
-                break;
-            case "Logout":
-                view = Action.LOGOUT.jsp;
-                break;
-            case "SignUp":
-                view = Action.SIGNUP.jsp;
-                break;
+        Action action = actionsResolver.resolve(req);
+        Cmd cmd = action.cmd;
+        Cmd nextCmd = cmd.execute(req, resp);
+        if (nextCmd==null) {
+            String view = action.jsp;
+            getServletContext().getRequestDispatcher(view).forward(req, resp);
         }
-        getServletContext().getRequestDispatcher(view).forward(req, resp);
+    }
+
+    @Override
+    public void init() throws ServletException {
+        //actionResolver
     }
 }
