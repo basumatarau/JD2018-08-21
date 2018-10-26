@@ -1,13 +1,22 @@
 package by.it.nesterovich.project.java;
 
+import by.it.nesterovich.project.java.cmd.Cmd;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 public class FrontController extends HttpServlet {
+
+    private ActionResolver actionResolver;
+
+    @Override
+    public void init() throws ServletException {
+        actionResolver = new ActionResolver();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         process(req, resp);
@@ -19,41 +28,27 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String command = req.getParameter("command");
-        String view = "/error.jsp";
-        //resp.setHeader("Cache-Control", "no-store, no-cache");
-
-        switch (command) {
-            case "Index": {
-                view = Actions.INDEX.jsp;
-                break;
-            }
-            case "Login": {
-                view = Actions.LOGIN.jsp;
-                break;
-            }
-            case "SignUp": {
-                view = Actions.SIGNUP.jsp;
-                break;
-            }
-            case "Logout": {
-                view = Actions.LOGOUT.jsp;
-                break;
-            }
-            case "CreateFilm": {
-                view = Actions.CREATEFILM.jsp;
-                break;
-            }
-            case "ListFilm": {
-                view = Actions.LISTFILM.jsp;
-                break;
-            }
+        Action action = actionResolver.resolver(req);
+        Cmd command = action.cmd;
+        String view = action.getJsp();
+        Cmd nextCommand;
+        try {
+            nextCommand = command.execute(req, resp);
+        } catch (Exception e) {
+            nextCommand = null;
+            view = Action.ERROR.getJsp();
+            req.setAttribute("printStackTrace", e.toString());
         }
-        resp.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
-        resp.setHeader("Pragma", "no-cache");
-        resp.setDateHeader("Expires", 0);
-        resp.setDateHeader("Last-Modified", new Date().getTime());
+        if (nextCommand == null || nextCommand == command) {
+            getServletContext().getRequestDispatcher(view).forward(req, resp);
+        } else {
+            resp.sendRedirect("do?command=" + nextCommand.toString());
+        }
 
-        getServletContext().getRequestDispatcher(view).forward(req, resp);
+//        resp.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+//        resp.setHeader("Pragma", "no-cache");
+//        resp.setDateHeader("Expires", 0);
+//        resp.setDateHeader("Last-Modified", new Date().getTime());
+
     }
 }
