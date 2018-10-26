@@ -1,7 +1,7 @@
-package by.it.nesterovich.jd03_03.dao;
+package by.it.nesterovich.project.java.dao;
 
-import by.it.nesterovich.jd03_03.beans.ReservedTicket;
-import by.it.nesterovich.jd03_03.ulils.ConnectionCreator;
+import by.it.nesterovich.project.java.beans.ReservedTicket;
+import by.it.nesterovich.project.java.ulils.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
