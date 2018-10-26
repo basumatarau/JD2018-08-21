@@ -2,7 +2,6 @@ package by.it.bindyuk.project.java;
 
 public enum Action {
 
-
     INDEX {
         {
             cmd = new CmdIndex();
@@ -15,25 +14,39 @@ public enum Action {
         {
             cmd = new CmdSignup();
         }
-    }, TICKET {
-        {
-            cmd = new CmdCreateTicket();
-        }
-//    }, REGISTRATION {
-//        {
-//            this.jsp = "/registration.jsp";
-//        }
-//    },
     }, ERROR {
         {
             cmd = new CmdError();
-
+        }
+    }, TICKET {
+        {
+            cmd = new CmdTicket();
+        }
+    }, HOME {
+        {
+            cmd = new CmdHome();
+        }
+    }, ORDER {
+        {
+            cmd = new CmdOrder();
+        }
+    }, PROFILE {
+        {
+            cmd = new CmdProfile();
+        }
+    }, TICKETS {
+        {
+            cmd = new CmdTickets();
+        }
+    }, RESET {
+        {
+            cmd = new CmdTickets();
         }
     };
 
     public Cmd cmd = new CmdError();
 
-    public String getjsp() {
+    public String getJsp() {
         return "/" + this.cmd.toString().toLowerCase() + ".jsp";
     }
 }

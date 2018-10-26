@@ -1,9 +1,7 @@
 package by.it.bindyuk.project.java.dao.dao;
 
-import by.it.bindyuk.jd03_02.ConnectionCreator;
-import by.it.bindyuk.jd03_03.beans.Ticket;
-import by.it.bindyuk.jd03_03.dao.AbstractDao;
-import by.it.bindyuk.jd03_03.dao.InterfaceDAO;
+import by.it.bindyuk.project.java.dao.ConnectionCreator;
+import by.it.bindyuk.project.java.dao.beans.Ticket;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

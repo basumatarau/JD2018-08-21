@@ -3,7 +3,9 @@
 <body>
     <div class="container">
     <%@ include file="include/menu.htm" %>
-    <p>INDEX: ${message}</p>
+    <p>ALL TICKETS: ${tickets}</p>
     </div>
 </body>
 </html>
+
+

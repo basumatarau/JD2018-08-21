@@ -126,8 +126,8 @@ public class Reset {
 
             //==========================================================================================================
             //билеты
-            statement.executeUpdate("INSERT INTO `bindyuk`.`tickets` (`id`, `transport`, `routes_id from`, `routes_id to`, `data`, `users_id`)" +
-                    " VALUES (DEFAULT, 'train', 1, 2, 0, 2);");
+            //statement.executeUpdate("INSERT INTO `bindyuk`.`tickets` (`id`, `transport`, `routes_id from`, `routes_id to`, `data`, `users_id`)" +
+            //        " VALUES (DEFAULT, 'train', 1, 2, 0, 2);");
 
         } catch (SQLException e) {
             e.printStackTrace();

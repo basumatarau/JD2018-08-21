@@ -1,7 +1,7 @@
 package by.it.bindyuk.project.java.dao.dao;
 
-import by.it.bindyuk.jd03_02.ConnectionCreator;
-import by.it.bindyuk.jd03_03.beans.Route;
+import by.it.bindyuk.project.java.dao.ConnectionCreator;
+import by.it.bindyuk.project.java.dao.beans.Route;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

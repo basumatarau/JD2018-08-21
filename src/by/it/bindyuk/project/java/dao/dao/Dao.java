@@ -1,18 +1,18 @@
 package by.it.bindyuk.project.java.dao.dao;
 
-import by.it.bindyuk.jd03_03.beans.Role;
-import by.it.bindyuk.jd03_03.beans.Route;
-import by.it.bindyuk.jd03_03.beans.Ticket;
-import by.it.bindyuk.jd03_03.beans.User;
+import by.it.bindyuk.project.java.dao.beans.Role;
+import by.it.bindyuk.project.java.dao.beans.Route;
+import by.it.bindyuk.project.java.dao.beans.Ticket;
+import by.it.bindyuk.project.java.dao.beans.User;
 
-class Dao {
+public class Dao {
 
     private static Dao instance;
 
-    InterfaceDAO<User> user;
-    InterfaceDAO<Role> role;
-    InterfaceDAO<Ticket> ticket;
-    InterfaceDAO<Route> route;
+    public InterfaceDAO<User> user;
+    public InterfaceDAO<Role> role;
+    public InterfaceDAO<Ticket> ticket;
+    public InterfaceDAO<Route> route;
 
     private Dao() {
     }

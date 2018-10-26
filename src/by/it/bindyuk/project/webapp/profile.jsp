@@ -3,15 +3,16 @@
 <body>
     <div class="container">
     <%@ include file="include/menu.htm" %>
-    <form class="form-horizontal" action="do?command=Login" method="get">
+
+    <form class="form-horizontal">
     <fieldset>
 
     <!-- Form Name -->
-    <legend>Login</legend>
+    <legend>Form Name</legend>
 
     <!-- Text input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="login">Loggin</label>
+      <label class="col-md-4 control-label" for="login">Login</label>
       <div class="col-md-4">
       <input id="login" name="login" type="text" placeholder="" class="form-control input-md" required="">
 
@@ -20,7 +21,7 @@
 
     <!-- Password input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="password">Password</label>
+      <label class="col-md-4 control-label" for="password">Password </label>
       <div class="col-md-4">
         <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
 
@@ -37,12 +38,10 @@
 
     </fieldset>
     </form>
+
+
     </div>
 </body>
 </html>
-
-
-
-
 
 

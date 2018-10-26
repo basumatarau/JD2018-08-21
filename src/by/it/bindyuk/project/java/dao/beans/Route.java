@@ -1,5 +1,7 @@
 package by.it.bindyuk.project.java.dao.beans;
 
+import java.util.Objects;
+
 public class Route {
 
     private long id;
@@ -35,5 +37,19 @@ public class Route {
                 "id=" + id +
                 ", city='" + city + '\'' +
                 '}'+'\n';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Route route = (Route) o;
+        return id == route.id &&
+                Objects.equals(city, route.city);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, city);
     }
 }

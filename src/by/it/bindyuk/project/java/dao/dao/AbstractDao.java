@@ -1,6 +1,6 @@
 package by.it.bindyuk.project.java.dao.dao;
 
-import by.it.bindyuk.jd03_03.ConnectionCreator;
+import by.it.bindyuk.project.java.dao.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

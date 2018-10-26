@@ -8,16 +8,23 @@ import java.io.IOException;
 
 public class FrontController extends HttpServlet {
 
-    private AcitonResolver actionResolver;
+    private ActionResolver actionResolver;
 
     @Override
     public void init() throws ServletException {
-        actionResolver = new AcitonResolver();
+        actionResolver = new ActionResolver();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        process(req, resp);
+        //process(req, resp);
+        Action action = actionResolver.resolve(req);
+        try {
+            action.cmd.execute(req, resp);
+            getServletContext().getRequestDispatcher(action.getJsp()).forward(req, resp);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -26,23 +33,23 @@ public class FrontController extends HttpServlet {
     }
 
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-        Action action = actionResolver.resolve(req);
-        Cmd command = action.cmd;
-        Cmd nextCommand;
-        String view = action.getjsp();
+        Action action = actionResolver.resolve(req);  //вытаскисваем значение команды
+        Cmd command = action.cmd;                     //получаем экземпляр класса Action и инициализируем его как команду
+        String view = action.getJsp();                //вьюшка , которую мы будем показывать в браузере (в зависимости от типа команды)
+        Cmd nextCommand;                              //команда для выполнения после актуальной
         try {
             nextCommand = command.execute(req, resp);
         } catch (Exception e) {
             nextCommand = null;
-            view = Action.ERROR.getjsp();
+            view = Action.ERROR.getJsp();
+            req.setAttribute("printStackTrace", e.toString());
         }
-
         if (nextCommand == null || nextCommand == command) {
+            //resp.setHeader("Cache-Control", "no-cache");
             getServletContext().getRequestDispatcher(view).forward(req, resp);
-        }
-        else
-            resp.sendRedirect("do?command="+nextCommand.toString());
+        } else {
+            resp.sendRedirect("do?command=" + nextCommand.toString());
         }
     }
+}
 

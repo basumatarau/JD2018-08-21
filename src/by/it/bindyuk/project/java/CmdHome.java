@@ -3,9 +3,9 @@ package by.it.bindyuk.project.java;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CmdCreateTicket extends Cmd {
+public class CmdHome extends Cmd {
     @Override
-    public Cmd execute(HttpServletRequest req, HttpServletResponse resp) {
+    Cmd execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         return null;
     }
 }
