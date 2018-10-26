@@ -17,13 +17,8 @@ public class CmdListFilm extends Cmd {
 
             List<Film> films = dao.film.getAll("");
             if (films.size() > 0) {
-//                for (int i = 0; i < films.size(); i++) {
-//                    req.setAttribute("films", films.get(i).getName());
-//                }
-
                 req.setAttribute("films", films);
             }
-
         }
         return null;
     }

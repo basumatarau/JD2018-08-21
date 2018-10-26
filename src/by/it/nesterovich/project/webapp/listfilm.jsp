@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
@@ -6,42 +7,31 @@
 
     <form class="form-horizontal" action="do?command=ListFilm" method="get">
         <fieldset>
-
-
             <table>
-
                 <div class="row">
-                    <div class=col-md-1>ID</div>
-                    <div class=col-md-2>Name</div>
-                    <div class=col-md-1>Country</div>
-                    <div class=col-md-1>Genre</div>
-                    <div class=col-md-1.5>Year of issue</div>
-                    <div class=col-md-1>Duration</div>
-                    <div class=col-md-1.5>List cinema</div>
+                    <div class=col-md-1><b>ID</b></div>
+                    <div class=col-md-2><b>Name</b></div>
+                    <div class=col-md-1><b>Country</b></div>
+                    <div class=col-md-3><b>Genre</b></div>
+                    <div class=col-md-2><b>Year of issue</b></div>
+                    <div class=col-md-1><b>Duration</b></div>
+                    <div class=col-md-2><b>List cinema</b></div>
                 </div>
-
-
                 <c:forEach items="${films}" var="film">
                     <tr>
-                        <td>${film.id}</td>
-                        <td>${film.name}</td>
-                        <td>${film.country}</td>
-                        <td>${film.genre}</td>
-                        <td>${film.yearOfIssue}</td>
-                        <td>${film.duration}</td>
+                        <div class="row">
+                            <div class=col-md-1>${film.id}</div>
+                            <div class=col-md-2>${film.name}</div>
+                            <div class=col-md-1>${film.country}</div>
+                            <div class=col-md-3>${film.genre}</div>
+                            <div class=col-md-2>${film.yearOfIssue}</div>
+                            <div class=col-md-1>${film.duration}</div>
+                            <div class=col-md-2>List cinema</div>
+                        </div>
                     </tr>
                 </c:forEach>
-
-
-                <p>${films}<br></p>
-
-
             </table>
-
-
         </fieldset>
     </form>
-
-
 </body>
 </html>
