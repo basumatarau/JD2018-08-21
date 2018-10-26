@@ -1,4 +1,4 @@
-package by.it.galushka.project.dao;
+package by.it.galushka.project.java.dao;
 
 public class Dao {
 

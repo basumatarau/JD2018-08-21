@@ -1,4 +1,4 @@
-package by.it.galushka.project.sql;
+package by.it.galushka.project.java.sql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

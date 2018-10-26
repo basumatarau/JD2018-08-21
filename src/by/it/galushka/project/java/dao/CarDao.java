@@ -1,6 +1,6 @@
-package by.it.galushka.project.dao;
+package by.it.galushka.project.java.dao;
 
-import by.it.galushka.project.beans.Car;
+import by.it.galushka.project.java.beans.Car;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

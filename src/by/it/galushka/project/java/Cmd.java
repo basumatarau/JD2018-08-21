@@ -11,6 +11,7 @@ abstract class Cmd {
     public String toString() {
         String simpleName = this.getClass().getSimpleName();
         String cmd = simpleName.replace("Cmd", "");
+
         return cmd;
     }
 }

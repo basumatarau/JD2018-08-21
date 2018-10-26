@@ -1,6 +1,6 @@
-package by.it.galushka.project.dao;
+package by.it.galushka.project.java.dao;
 
-import by.it.galushka.project.beans.Order;
+import by.it.galushka.project.java.beans.Order;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package by.it.galushka.project.dao;
+package by.it.galushka.project.java.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

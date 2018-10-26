@@ -12,7 +12,7 @@ enum Action {
         cmd = new CmdSignUp();
     }},
 //    LOGOUT {{
-////        cmd = new CmdLogout();
+//        cmd = new CmdLogout();
 //    }},
     ERROR {{
         cmd = new CmdError();

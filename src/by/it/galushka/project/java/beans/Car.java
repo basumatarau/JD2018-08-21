@@ -1,4 +1,4 @@
-package by.it.galushka.project.beans;
+package by.it.galushka.project.java.beans;
 
 public class Car {
 
