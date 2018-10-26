@@ -3,26 +3,24 @@ package by.it.galushka.project.java;
 public enum Action {
 
     INDEX {{
-        this.jsp = "/index.jsp";
         cmd = new CmdIndex();
     }},
     LOGIN {{
-        this.jsp = "/login.jsp";
         cmd = new CmdLogin();
     }},
     SIGNUP {{
-        this.jsp = "/logout.jsp";
         cmd = new CmdSignUp();
     }},
-    LOGOUT {{
-        this.jsp = "/signup.jsp";
-//        cmd = new CmdLogin();
-    }},
+//    LOGOUT {{
+////        cmd = new CmdLogout();
+//    }},
     ERROR {{
-        this.jsp = "/error.jsp";
         cmd = new CmdError();
     }};
 
-    public String jsp = "/error.jsp";
+    public String getJsp() {
+        return "/" + this.cmd.toString().toLowerCase() + ".jsp";
+    }
+
     public Cmd cmd = new CmdError();
 }
