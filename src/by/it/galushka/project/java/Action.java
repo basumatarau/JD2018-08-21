@@ -1,6 +1,6 @@
 package by.it.galushka.project.java;
 
-public enum Action {
+enum Action {
 
     INDEX {{
         cmd = new CmdIndex();

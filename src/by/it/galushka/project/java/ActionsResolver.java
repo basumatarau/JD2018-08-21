@@ -9,7 +9,7 @@ public class ActionsResolver {
         String command = req.getParameter("command");
         try {
             result = Action.valueOf(command.toUpperCase());
-        } catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
 //            result = Action.ERROR;
 //            message to error.jsp
         }

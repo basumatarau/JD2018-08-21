@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 public class FrontController extends HttpServlet {
 
+
     private ActionsResolver actionsResolver;
 
     @Override
@@ -48,5 +49,6 @@ public class FrontController extends HttpServlet {
             getServletContext().getRequestDispatcher(view).forward(req, resp);
         } else
             resp.sendRedirect("do?command=" + nextCommand.toString());
+
     }
 }
