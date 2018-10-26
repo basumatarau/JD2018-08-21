@@ -1,19 +1,17 @@
 package by.it.voinilo.jd03.jd03_03.beans;
 
-import java.util.Objects;
-
-public class Role {
-    public int id;
+public class Roleparam {
+    private long id;
     private String login;
     private String password;
     private String email;
     private int roles_id;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public static void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -49,27 +47,7 @@ public class Role {
         this.roles_id = roles_id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Role user = (Role) o;
-        return id == user.id &&
-                roles_id == user.roles_id &&
-                Objects.equals(login, user.login) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(email, user.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, login, password, email, roles_id);
-    }
-
-
-
-
-    public Role(int id, String login, String password, String email, int roles_id) {
+    public Roleparam(long id, String login, String password, String email, int roles_id) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -77,14 +55,12 @@ public class Role {
         this.roles_id = roles_id;
     }
 
-
-    public Role() {
+    public Roleparam() {
     }
-
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Roleparam{" +
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
