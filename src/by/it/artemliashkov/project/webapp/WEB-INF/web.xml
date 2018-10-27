@@ -4,6 +4,7 @@
                       http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0"
          metadata-complete="true">
+
     <servlet>
         <servlet-name>servletFrontController</servlet-name>
         <servlet-class>by.it.artemliashkov.project.java.FrontController</servlet-class>
@@ -13,14 +14,5 @@
         <servlet-name>servletFrontController</servlet-name>
         <url-pattern>/do</url-pattern>
     </servlet-mapping>
-
-    <filter>
-        <filter-name>servletCacheControl</filter-name>
-        <filter-class>by.it.artemliashkov.project.java.CacheControl</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>servletCacheControl</filter-name>
-        <url-pattern>/do</url-pattern>
-    </filter-mapping>
 
 </web-app>

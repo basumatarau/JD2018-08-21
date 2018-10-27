@@ -13,7 +13,7 @@ import java.sql.Statement;
 public class TaskC {
 
     public static void main(String[] args) throws SQLException {
-        //reset();
+        reset();
         initializing();
         initTables();
     }
@@ -21,10 +21,11 @@ public class TaskC {
     static void reset() throws SQLException {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
-
-            statement.executeUpdate("DROP TABLE IF EXISTS Role;");
-            statement.executeUpdate("DROP TABLE IF EXISTS `mydb`.`Agents` ;");
             statement.executeUpdate("DROP TABLE IF EXISTS `mydb`.`Company` ;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `mydb`.`Agents` ;");
+            statement.executeUpdate("DROP TABLE IF EXISTS `mydb`.`Role` ;");
+
+
         }
     }
 
@@ -74,12 +75,16 @@ public class TaskC {
     private static void initTables() throws SQLException {
         RoleCRUD.create(new Role(0,"admin"));
         RoleCRUD.create(new Role(0,"user"));
+        //AgentCRUD.create(new Agent(0,"artem","ostroshitstskaia",6));
+        //AgentCRUD.create(new Agent(0,"vera","gintovta",4));
+        //AgentCRUD.create(new Agent(0,"galina","nikiforova",4));
+        //AgentCRUD.create(new Agent(0,"sasha","gorodetskaia",5));
 
-        AgentCRUD.create(new Agent(0,"artem","ostroshitstskaia",6));
-        AgentCRUD.create(new Agent(0,"vera","gintovta",4));
-        AgentCRUD.create(new Agent(0,"galina","nikiforova",4));
-        AgentCRUD.create(new Agent(0,"sasha","gorodetskaia",5));
-        CompanyCRUD.create(new Company(0,"TASK","insurance",  666,"ostrosh",6));
-        CompanyCRUD.create(new Company(0, "TASK2", "insurance", 345,"gint",113));
+
+        //CompanyCRUD.create(new Company(0,"TASK","insurance",  666,"ostrosh",6));
+        //CompanyCRUD.create(new Company(0, "TASK2", "insurance", 345,"gint",113));
+
+
+
     }
 }

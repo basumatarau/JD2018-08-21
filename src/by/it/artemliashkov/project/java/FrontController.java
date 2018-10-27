@@ -1,12 +1,22 @@
 package by.it.artemliashkov.project.java;
 
+import by.it.artemliashkov.project.java.cmd.Cmd;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class FrontController  extends HttpServlet {
+public class FrontController extends HttpServlet {
+
+    private ActionResolver actionResolver;
+
+    @Override
+    public void init() throws ServletException {
+        actionResolver = new ActionResolver();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         process(req, resp);
@@ -17,30 +27,22 @@ public class FrontController  extends HttpServlet {
         process(req, resp);
     }
 
-
     private void process(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String command = req.getParameter("command");
-        String view = "/error.jsp";
-        //resp.setHeader("Cache-Control", "no-store, no-cache");
-
-        switch (command) {
-            case "Index": {
-                view = Actions.INDEX.jsp;
-                break;
-            }
-            case "Login": {
-                view = Actions.LOGIN.jsp;
-                break;
-            }
-            case "SignUp": {
-                view = Actions.SIGNUP.jsp;
-                break;
-            }
-            case "Logout": {
-                view = Actions.LOGOUT.jsp;
-                break;
-            }
+        Actions action = actionResolver.resolver(req);
+        Cmd command = action.cmd;
+        String view = action.getJsp();
+        Cmd nextCommand;
+        try {
+            nextCommand = command.execute(req, resp);
+        } catch (Exception e) {
+            nextCommand = null;
+            view = Actions.ERROR.getJsp();
+            req.setAttribute("printStackTrace", e.toString());
         }
-        getServletContext().getRequestDispatcher(view).forward(req, resp);
+        if (nextCommand == null || nextCommand == command) {
+            getServletContext().getRequestDispatcher(view).forward(req, resp);
+        } else {
+            resp.sendRedirect("do?command=" + nextCommand.toString());
+        }
     }
 }
