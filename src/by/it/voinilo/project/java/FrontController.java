@@ -44,8 +44,8 @@ public class FrontController extends HttpServlet {
 
 
         }
+       // response.setHeader("Cache-Control", "only-if-cached");
         response.setHeader("Cache-Control", "no-store, no-cache");
-
         getServletContext().getRequestDispatcher(view).forward(req, response);
     }
 
