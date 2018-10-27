@@ -1,4 +1,4 @@
-package by.it.galushka.jd03_03;
+package by.it.galushka.project.java.dao;
 
 import java.sql.SQLException;
 import java.util.List;
