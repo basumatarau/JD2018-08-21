@@ -1,12 +1,9 @@
-<html lang="en">
+<html>
 <%@ include file="include/head.htm" %>
 <body>
-
-<div class="container">
+    <div class="container">
     <%@ include file="include/menu.htm" %>
-    <p>ERROR: ${printStackTrace}</p>
-</div>
+    <p>INDEX: ${message}</p>
+    </div>
 </body>
 </html>
-
-
