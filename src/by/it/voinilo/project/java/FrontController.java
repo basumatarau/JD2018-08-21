@@ -9,7 +9,12 @@ import java.io.IOException;
 
 
 public class FrontController extends HttpServlet {
+    ActionResolver actionResolver;
 
+    @Override
+    public void init() throws ServletException {
+        actionResolver = new ActionResolver();
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,30 +28,25 @@ public class FrontController extends HttpServlet {
     }
 
 
-
     private void process(HttpServletRequest req, HttpServletResponse response) throws IOException, ServletException {
+        Action action = actionResolver.resolve(req);
+        Cmd command = action.cmd;
+        Cmd nextCommand;
+        String view = action.getJsp;
+        try {
 
-
-        String command = req.getParameter("command");
-        String view = "/error.jsp";
-        switch (command) {
-            case "Index":
-                view = Actions.INDEX.jsp;
-                break;
-            case "Login":
-                view = Actions.LOGIN.jsp;
-                break;
-            case "Logout":
-                view = Actions.LOGOUT.jsp;
-                break;
-            case "SignUp":
-                view = Actions.SIGNUP.jsp;
-
-
+            nextCommand= command.execute(req, response);
+        } catch (Exception e) {
+            nextCommand=null;
+            view= Action.ERROR.getJsp;
         }
-       // response.setHeader("Cache-Control", "only-if-cached");
-        response.setHeader("Cache-Control", "no-store, no-cache");
-        getServletContext().getRequestDispatcher(view).forward(req, response);
+       if (nextCommand == null || nextCommand==command) {
+           response.setHeader("Cache-Control", "no-store, no-cache");
+            getServletContext().getRequestDispatcher(view).forward(req, response);
+        }
+        else
+            response.sendRedirect("do?command="+ nextCommand.toString());
+
     }
 
 
