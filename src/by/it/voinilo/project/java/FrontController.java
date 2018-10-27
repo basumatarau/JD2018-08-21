@@ -35,17 +35,16 @@ public class FrontController extends HttpServlet {
         String view = action.getJsp;
         try {
 
-            nextCommand= command.execute(req, response);
+            nextCommand = command.execute(req, response);
         } catch (Exception e) {
-            nextCommand=null;
-            view= Action.ERROR.getJsp;
+            nextCommand = null;
+            view = Action.ERROR.getJsp;
         }
-       if (nextCommand == null || nextCommand==command) {
-           response.setHeader("Cache-Control", "no-store, no-cache");
+        if (nextCommand == null || nextCommand == command) {
+            response.setHeader("Cache-Control", "no-store, no-cache");
             getServletContext().getRequestDispatcher(view).forward(req, response);
-        }
-        else
-            response.sendRedirect("do?command="+ nextCommand.toString());
+        } else
+            response.sendRedirect("do?command=" + nextCommand.toString());
 
     }
 
