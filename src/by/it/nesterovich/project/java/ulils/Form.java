@@ -8,7 +8,7 @@ public class Form {
         if (value.trim().matches(regexPattern)) {
             return value;
         } else {
-            throw new ParseException("Input error" + value, 1);
+            throw new ParseException("Input error: " + value, 1);
         }
     }
 }
