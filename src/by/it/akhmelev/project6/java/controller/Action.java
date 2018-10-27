@@ -11,6 +11,9 @@ enum Action {
     LOGIN {{
         cmd = new CmdLogin();
     }},
+    PROFILE {{
+        cmd = new CmdProfile();
+    }},
     CREATEAD {{
         cmd = new CmdCreateAd();
     }},
