@@ -1,8 +1,54 @@
 <html lang="en">
 <%@ include file="include/head.htm" %>
 <body>
-<%@ include file="include/menu.htm" %>
-<p>Cmd Sign-up: ${message}</p>
+<div class="container">
+
+    <%@ include file="include/menu.htm" %>
+    ${message}
+    <form class="form-horizontal" action="do?command=SignUp" method="post">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Sign-up form</legend>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="logininput">Login</label>
+              <div class="col-md-4">
+              <input id="logininput" name="logininput" type="text" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="emailinput">Email</label>
+              <div class="col-md-4">
+              <input id="emailinput" name="emailinput" type="text" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="passwordinput">Password</label>
+              <div class="col-md-4">
+                <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md" required="">
+
+              </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="signupsubmit"></label>
+              <div class="col-md-4">
+                <button id="signupsubmit" name="signupsubmit" class="btn btn-primary">Sing me up</button>
+              </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
 </body>
 </html>
 
