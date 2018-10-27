@@ -1,12 +1,13 @@
 package by.it.galushka.project.java;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class FrontController extends HttpServlet {
 
@@ -46,7 +47,9 @@ public class FrontController extends HttpServlet {
             req.setAttribute("printStackTrace", e.toString());
         }
         if (nextCommand == null || nextCommand == command) {
-            getServletContext().getRequestDispatcher(view).forward(req, resp);
+            ServletContext servletContext = getServletContext();
+            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(view);
+            requestDispatcher.forward(req,resp);
         } else
             resp.sendRedirect("do?command=" + nextCommand.toString());
 
