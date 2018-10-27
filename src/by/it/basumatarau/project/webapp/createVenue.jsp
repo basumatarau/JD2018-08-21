@@ -57,6 +57,27 @@
               </div>
             </div>
 
+            <!-- DateTime input -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="datetimeinput">Date and time</label>
+                <div class="col-md-4">
+                    <div class='input-group date' id='datetimepicker1'>
+                        <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker1').datetimepicker({
+                                            <!-- showMeridian: false -->
+                                            format: 'YYYY-MM-DD hh:mm:ss',
+                                        });
+                                });
+                        </script>
+                        <input id="datetimeinput" name="datetimeinput" type="text" class="form-control input-md" required=""/>
+                        <div class="input-group-addon">
+                            <div class="glyphicon glyphicon-calendar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Button -->
             <div class="form-group">
               <label class="col-md-4 control-label" for="venuesubmit"></label>
