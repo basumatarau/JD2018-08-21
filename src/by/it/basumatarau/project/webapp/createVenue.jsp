@@ -61,7 +61,7 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="datetimeinput">Date and time</label>
                 <div class="col-md-4">
-                    <div class='input-group date' id='datetimepicker1'>
+                    <div class='input-group date' id='datetimepicker1' showMeridian="false" language="ru">
                         <script type="text/javascript">
                                 $(function () {
                                     $('#datetimepicker1').datetimepicker({
