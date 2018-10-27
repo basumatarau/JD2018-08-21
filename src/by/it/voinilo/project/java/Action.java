@@ -24,7 +24,7 @@ public enum Action {
         cmd =new CmdError();
     }};
 
-    public String getJsp = "/"+this.cmd.toString().toLowerCase() +".jsp";
+    public String getJsp(){ return "/"+this.cmd.toString().toLowerCase() +".jsp";}
     public Cmd cmd =new CmdError();
 
 }

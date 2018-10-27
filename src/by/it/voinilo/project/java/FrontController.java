@@ -32,13 +32,13 @@ public class FrontController extends HttpServlet {
         Action action = actionResolver.resolve(req);
         Cmd command = action.cmd;
         Cmd nextCommand;
-        String view = action.getJsp;
+        String view = action.getJsp();
         try {
 
             nextCommand = command.execute(req, response);
         } catch (Exception e) {
             nextCommand = null;
-            view = Action.ERROR.getJsp;
+            view = Action.ERROR.getJsp();
         }
         if (nextCommand == null || nextCommand == command) {
             response.setHeader("Cache-Control", "no-store, no-cache");

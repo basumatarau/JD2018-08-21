@@ -8,7 +8,7 @@
 
 <%@ include file="include/menu.htm" %>
 <p>Cmd Sign-up: ${message}</p>
-<form class="form-horizontal" >
+<form class="form-horizontal" action="do?command=SignUp" method="post">
 
 </br>
 </br>
@@ -22,25 +22,25 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="login" align="left" >Login</label>
   <div class="col-md-4">
-  <input id="login" name="login" type="text" placeholder="" class="form-control input-md">
+  <input id="login" name="login" type="text" placeholder="" value="testlogin" class="form-control input-md">
 
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="email" align="left">Email</label>
+  <label class="col-md-4 control-label" for="email"  align="left">Email</label>
   <div class="col-md-4">
-  <input id="email" name="email" type="text" placeholder="" class="form-control input-md">
+  <input id="email" name="email" type="text" placeholder="" value="testEmail" class="form-control input-md">
 
   </div>
 </div>
 
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="password" align="left">Password</label>
+  <label class="col-md-4 control-label" for="password" align="left"> Password</label>
   <div class="col-md-4">
-    <input id="password" name="password" type="password" placeholder="" class="form-control input-md">
+    <input id="password" name="password" type="password" placeholder="" value="testpassword" class="form-control input-md">
 
   </div>
 </div>
