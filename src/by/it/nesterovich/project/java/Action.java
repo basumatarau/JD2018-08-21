@@ -19,6 +19,9 @@ public enum Action {
     LISTFILM {{
         cmd = new CmdListFilm();
     }},
+    USERCABINET {{
+        cmd = new CmdUserCabinet();
+    }},
     ERROR {{
         cmd = new CmdError();
     }};
