@@ -5,9 +5,9 @@
     <%@ include file="include/menu.htm" %>
     <legend>User cabinet</legend>
 
-    <div>Reserved ticket</div>
+    <div><a href="do?command=ReservedTicket">Reserved ticket</a></div>
     <div><a href="do?command=ListFilm">List film</a></div>
-    <div>Info user</div>
+    <div><a href="do?command=UserInfo">Info user</a></div>
 
 </body>
 </html>

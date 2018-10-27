@@ -4,6 +4,7 @@
 <body>
 <div class="container">
     <%@ include file="include/menu.htm" %>
+        <legend>List film</legend>
 
     <form class="form-horizontal" action="do?command=ListFilm" method="get">
         <fieldset>
@@ -26,7 +27,7 @@
                             <div class=col-md-3>${film.genre}</div>
                             <div class=col-md-2>${film.yearOfIssue}</div>
                             <div class=col-md-1>${film.duration}</div>
-                            <div class=col-md-2>List cinema</div>
+                            <div class=col-md-2><a href="do?command=ListCinema">List cinema</a></div>
                         </div>
                     </tr>
                 </c:forEach>
