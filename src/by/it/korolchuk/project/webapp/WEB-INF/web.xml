@@ -7,7 +7,7 @@
     <display-name>Front Controller</display-name>
 
     <servlet>
-        <servlet-name>HelloServletName</servlet-name>
+        <servlet-name>FrontConytroller</servlet-name>
         <servlet-class>by.it.korolchuk.project.java.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>

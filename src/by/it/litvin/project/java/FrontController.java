@@ -7,33 +7,43 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class FrontController extends HttpServlet {
+
+    private ActionResolver actionResolver;
+
+    @Override
+    public void init() throws ServletException {
+        actionResolver = new ActionResolver();
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        proces(req,resp);
+        process(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        proces(req,resp);
+        process(req, resp);
     }
 
-    private void proces (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
-        String command = req.getParameter("command");
-        String view="/error.jsp";
-        switch (command){
-            case "Index":view=Actions.INDEX.jsp;
-            break;
-            case "Login":view=Actions.LOGIN.jsp;
-                break;
-            case "Logout":view=Actions.LOGOUT.jsp;
-                break;
-            case "SignUp":view=Actions.SIGNUP.jsp;
-                break;
+    private void process(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        Action action = actionResolver.resolve(req);
+        Cmd command = action.cmd;
+        Cmd nextCommand;
+        String view = action.getJsp();
+        try {
+            nextCommand = command.execute(req, resp);
+        } catch (Exception e) {
+            nextCommand = null;
+            view = Action.ERROR.getJsp();
         }
+        if (nextCommand == null || nextCommand == command) {
+            getServletContext().getRequestDispatcher(view).forward(req, resp);
 
-        getServletContext().getRequestDispatcher(view).forward(req,resp);
+        } else
+            resp.sendRedirect("do?command=" + nextCommand.toString());
     }
 
 }
