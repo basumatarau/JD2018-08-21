@@ -75,7 +75,7 @@ public class ReservedTicketDao extends AbstractDao implements InterfaceDao<Reser
                 ReservedTicket reservedTicket = new ReservedTicket(
                         resultSet.getLong("id"),
                         resultSet.getInt("code"),
-                        resultSet.getDouble("cost"),
+                        resultSet.getDouble("cost"),  //устранить округление
                         resultSet.getLong("users_id"),
                         resultSet.getLong("films_id"),
                         resultSet.getLong("cinemas_id")
