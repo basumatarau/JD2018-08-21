@@ -65,8 +65,9 @@
                         <script type="text/javascript">
                                 $(function () {
                                     $('#datetimepicker1').datetimepicker({
-                                            <!-- showMeridian: false -->
                                             format: 'YYYY-MM-DD hh:mm:ss',
+
+                                            <!-- showMeridian: false,-->
                                         });
                                 });
                         </script>
