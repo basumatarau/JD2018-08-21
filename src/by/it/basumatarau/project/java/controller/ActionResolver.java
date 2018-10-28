@@ -1,8 +1,8 @@
-package by.it.basumatarau.project.java;
+package by.it.basumatarau.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ActionResolver {
+class ActionResolver {
 
     Action resolve(HttpServletRequest request){
         Action result = Action.ERROR;

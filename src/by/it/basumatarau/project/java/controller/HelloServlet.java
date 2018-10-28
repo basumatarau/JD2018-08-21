@@ -1,4 +1,4 @@
-package by.it.basumatarau.project.java;
+package by.it.basumatarau.project.java.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

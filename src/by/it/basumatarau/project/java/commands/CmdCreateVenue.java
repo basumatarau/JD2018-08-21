@@ -1,36 +1,35 @@
 package by.it.basumatarau.project.java.commands;
 
-import by.it.basumatarau.project.java.Action;
+import by.it.basumatarau.project.java.controller.Action;
 import by.it.basumatarau.project.java.beans.Place;
 import by.it.basumatarau.project.java.beans.Venue;
+import by.it.basumatarau.project.java.beans.User;
+import by.it.basumatarau.project.java.controller.FormHandler;
 import by.it.basumatarau.project.java.customDAO.DAO;
 import by.it.basumatarau.project.java.customDAO.PlaceDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.text.ParseException;
 import java.util.List;
 
 public class CmdCreateVenue extends Cmd {
     @Override
-    public Cmd execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        if(request.getMethod().equalsIgnoreCase("post")){
+    public Cmd execute(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ParseException {
 
-            if(!request.getParameter("nameinput").matches(RegExPatterns.venueName)
-                    ||!request.getParameter("descriptioninput").matches(RegExPatterns.venueDescription)
-                    ||!request.getParameter("feeinput").matches(RegExPatterns.venueFee)
-                    ||!request.getParameter("placenameinput").matches(RegExPatterns.placeName)
-                    ||!request.getParameter("addressinput").matches(RegExPatterns.address)
-                    ||!request.getParameter("datetimeinput").matches(RegExPatterns.dateTime)
-            ){
-                request.setAttribute("message", "Illegal input value(s)...");
-                return null;
-            }
+        HttpSession session = request.getSession(false);
+        Object user = session.getAttribute("user");
+        if(user==null){
+            return Action.LOGIN.command;
+        }
 
+        if(FormHandler.isPost(request, response)){
             Place place = new Place(
-                    request.getParameter("placenameinput"),
-                    request.getParameter("addressinput")
+                    FormHandler.getString(request, "placenameinput", RegExPatterns.PLACE_NAME),
+                    FormHandler.getString(request, "addressinput", RegExPatterns.ADDRESS)
                     );
             PlaceDAO placeDAO = DAO.getDAO().place;
 
@@ -40,16 +39,16 @@ public class CmdCreateVenue extends Cmd {
 
             if(places.size()>0){
                 place = places.get(0);
+            }else {
+                placeDAO.create(place);
             }
 
-            placeDAO.create(place);
-
             Venue venue = new Venue(
-                    request.getParameter("nameinput"),
-                    request.getParameter("descriptioninput"),
-                    Timestamp.valueOf(request.getParameter("datetimeinput")),
-                    Float.parseFloat(request.getParameter("feeinput")),
-                    1,
+                    FormHandler.getString(request, "nameinput", RegExPatterns.VENUE_NAME),
+                    FormHandler.getString(request, "descriptioninput", RegExPatterns.VENUE_DESCRIPTION),
+                    FormHandler.getTimestamp(request, "datetimeinput"),
+                    FormHandler.getFloat(request, "feeinput"),
+                    ((User)user).getId(),
                     place.getId()
             );
 

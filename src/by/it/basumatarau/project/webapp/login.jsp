@@ -1,9 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
 <html lang="en">
 <%@ include file="include/head.htm" %>
 <body>
 
 <div class="container">
-    <%@ include file="include/menu.htm" %>
+    <%@ include file="include/menu.jsp" %>
 
     <form class="form-horizontal" action="do?command=Login" method="post">
     <fieldset>
@@ -16,7 +18,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="logininput">Login</label>
       <div class="col-md-4">
-      <input id="logininput" name="logininput" type="text" placeholder="" class="form-control input-md" required="">
+      <input id="logininput" name="logininput" type="text" placeholder="" value="testLogin" class="form-control input-md" required="">
 
       </div>
     </div>
@@ -25,7 +27,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="passwordinput">Password</label>
       <div class="col-md-4">
-        <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md" required="">
+        <input id="passwordinput" name="passwordinput" type="password" placeholder="" value="testpassword" class="form-control input-md" required="">
 
       </div>
     </div>

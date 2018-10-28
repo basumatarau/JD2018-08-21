@@ -1,32 +1,26 @@
 package by.it.basumatarau.project.java.commands;
 
-import by.it.basumatarau.project.java.Action;
+import by.it.basumatarau.project.java.controller.Action;
 import by.it.basumatarau.project.java.beans.User;
+import by.it.basumatarau.project.java.controller.FormHandler;
 import by.it.basumatarau.project.java.customDAO.DAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 public class CmdSignUp extends Cmd {
     @Override
-    public Cmd execute(HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        if(request.getMethod().equalsIgnoreCase("post")){
-
-            String emailRegExp = "([-_А-Яа-яЁё\\w\\d]{1,40})@([-_А-Яа-яЁё\\w\\d]{1,20}).([-_А-Яа-яЁё\\w\\d]{1,4})";
-            String loginRegExp = "([-_А-Яа-яЁё\\w\\d]{1,60})";
-
-            if(!request.getParameter("logininput").matches(emailRegExp)||
-                    !request.getParameter("passwordinput").matches(loginRegExp)){
-                request.setAttribute("message", "Illegal password or login...");
-                return null;
-            }
+    public Cmd execute(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, ParseException {
+        if(FormHandler.isPost(request, response)){
 
             DAO dao = DAO.getDAO();
 
             String sqlStatement = String.format(" WHERE `Email`='%s' OR `LOGIN`='%s' ",
-                    request.getParameter("emailinput"),
-                    request.getParameter("logininput")
+                    FormHandler.getString(request, "emailinput", RegExPatterns.EMAIL_REG_EXP),
+                    FormHandler.getString(request, "logininput", RegExPatterns.LOGIN_REG_EXP)
             );
 
             if(dao.user.getAll(sqlStatement).size()>0){
@@ -36,9 +30,9 @@ public class CmdSignUp extends Cmd {
             }
 
             dao.user.create(new User(
-                    request.getParameter("logininput"),
-                    request.getParameter("passwordinput"),
-                    request.getParameter("emailinput"),
+                    FormHandler.getString(request, "logininput", RegExPatterns.LOGIN_REG_EXP),
+                    FormHandler.getString(request, "passwordinput", RegExPatterns.PASSWORD),
+                    FormHandler.getString(request, "emailinput", RegExPatterns.EMAIL_REG_EXP),
                     2
                     )
             );
