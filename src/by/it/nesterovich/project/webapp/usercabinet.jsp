@@ -12,7 +12,7 @@
 
             <div><a href="do?command=ReservedTicket">Reserved ticket</a></div>
             <div><a href="do?command=ListFilm">List film</a></div>
-            <div><a href="do?command=UserInfo">Info user</a></div>
+            <div><a href="do?command=EditUserInfo">Edit info user</a></div>
 
             <div class="form-group">
                 <label class="col-md-4 control-label" for="logout"></label>

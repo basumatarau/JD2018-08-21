@@ -5,6 +5,7 @@
 <div class="container">
     <%@ include file="include/menu.htm" %>
         <legend>List film</legend>
+        <div><a href="do?command=CreateFilm">Create film</a></div>
 
     <form class="form-horizontal" action="do?command=ListFilm" method="get">
         <fieldset>

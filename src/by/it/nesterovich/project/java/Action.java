@@ -25,11 +25,17 @@ public enum Action {
     USERCABINET {{
         cmd = new CmdUserCabinet();
     }},
-    USERINFO {{
-        cmd = new CmdUserInfo();
+    EDITUSERINFO {{
+        cmd = new CmdEditUserInfo();
     }},
     RESERVEDTICKET {{
         cmd = new CmdReservedTicket();
+    }},
+    CREATEFILM {{
+        cmd = new CmdCreateFilm();
+    }},
+    CREATECINEMA {{
+        cmd = new CmdCreateCinema();
     }},
     ERROR {{
         cmd = new CmdError();

@@ -7,4 +7,9 @@ public interface Patterns {
     String FIRSTNAME = "[a-zA-Z]+";
     String LASTNAME = "[a-zA-Z]+";
     String PHONENUMBER = "[0-9]{8,12}";
+    String NAMEFILM = "\\w+";
+    String COUNTRY = "[a-zA-Z]+";
+    String GENRE = "[a-zA-Z]+";
+    String YEAROFISSUE = "[0-9]{4}";
+    String DURATION = "[0-9]{1,3}";
 }
