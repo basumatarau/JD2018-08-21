@@ -1,7 +1,7 @@
 package by.it.nesterovich.project.java.cmd;
 
 import by.it.nesterovich.project.java.Action;
-import by.it.nesterovich.project.java.ulils.DataBase;
+import by.it.nesterovich.project.java.utils.DataBase;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

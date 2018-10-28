@@ -3,8 +3,8 @@ package by.it.nesterovich.project.java.cmd;
 import by.it.nesterovich.project.java.Action;
 import by.it.nesterovich.project.java.beans.User;
 import by.it.nesterovich.project.java.dao.Dao;
-import by.it.nesterovich.project.java.ulils.Form;
-import by.it.nesterovich.project.java.ulils.Patterns;
+import by.it.nesterovich.project.java.utils.Form;
+import by.it.nesterovich.project.java.utils.Patterns;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +14,7 @@ public class CmdSignUp extends Cmd {
     @Override
     public Cmd execute(HttpServletRequest req, HttpServletResponse resp)
             throws Exception {
-        if (req.getMethod().equalsIgnoreCase("post")) {
+        if (Form.isPost(req)) {
             String login = Form.getString(req.getParameter("login"), Patterns.LOGIN);
             String email = Form.getString(req.getParameter("email"), Patterns.EMAIL);
             String password = Form.getString(req.getParameter("password"), Patterns.PASSWORD);

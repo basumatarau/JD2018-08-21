@@ -1,4 +1,4 @@
-package by.it.nesterovich.project.java.ulils;
+package by.it.nesterovich.project.java.utils;
 
 public interface Patterns {
     String LOGIN = "\\w+";
