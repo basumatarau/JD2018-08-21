@@ -1,19 +1,26 @@
 package by.it.galushka.project.java;
 
-public enum Action {
+enum Action {
 
     INDEX {{
-        this.jsp = "/index.jsp";
+        cmd = new CmdIndex();
     }},
     LOGIN {{
-        this.jsp = "/login.jsp";
+        cmd = new CmdLogin();
     }},
     SIGNUP {{
-        this.jsp = "/logout.jsp";
+        cmd = new CmdSignUp();
     }},
-    LOGOUT {{
-        this.jsp = "/signup.jsp";
+//    LOGOUT {{
+//        cmd = new CmdLogout();
+//    }},
+    ERROR {{
+        cmd = new CmdError();
     }};
 
-    public String jsp = "/error.jsp";
+    public String getJsp() {
+        return "/" + this.cmd.toString().toLowerCase() + ".jsp";
+    }
+
+    public Cmd cmd = new CmdError();
 }
