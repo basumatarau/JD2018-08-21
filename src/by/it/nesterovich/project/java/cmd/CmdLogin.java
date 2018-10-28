@@ -5,6 +5,7 @@ import by.it.nesterovich.project.java.beans.User;
 import by.it.nesterovich.project.java.dao.Dao;
 import by.it.nesterovich.project.java.utils.Form;
 import by.it.nesterovich.project.java.utils.Patterns;
+import by.it.nesterovich.project.java.utils.Utils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,10 @@ public class CmdLogin extends Cmd {
 
     @Override
     public Cmd execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        User user = Utils.getUser(req);
+        if (user != null) {
+            return Action.USERCABINET.cmd;
+        }
         if (Form.isPost(req)) {
             String login = Form.getString(req.getParameter("login"), Patterns.LOGIN);
             String password = Form.getString(req.getParameter("password"), Patterns.PASSWORD);

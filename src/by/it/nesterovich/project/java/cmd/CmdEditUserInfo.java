@@ -30,7 +30,7 @@ public class CmdEditUserInfo extends Cmd {
             user.setPhoneNumber(phoneNumber);
             Dao dao = Dao.getDao();
             dao.user.update(user);
-            return Action.EDITUSERINFO.cmd;
+            return Action.USERCABINET.cmd;
         }
         return null;
     }
