@@ -40,7 +40,7 @@ public enum Action {
         }
     }, RESET {
         {
-            cmd = new CmdTickets();
+            cmd = new CmdReset();
         }
     };
 
