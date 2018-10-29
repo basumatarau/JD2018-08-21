@@ -1,6 +1,7 @@
 <html>
 <%@ include file="include/head.htm" %>
 <body>
+<div class = "container">
 <%@ include file="include/menu.htm" %>
 <p>CreateAd: ${message}</p>
 <form class="form-horizontal" action="do?command=SignUp" method="post">
@@ -8,6 +9,15 @@
 
 <!-- Form Name -->
 <legend>Add ad</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="name">Name</label>
+  <div class="col-md-6">
+  <input id="name" name="name" type="text" placeholder="" value="name" class="form-control input-md">
+
+  </div>
+</div>
 
 <!-- Text input-->
 <div class="form-group">
@@ -64,7 +74,7 @@
 
 </fieldset>
 </form>
-
+</div>
 </body>
 </html>
 

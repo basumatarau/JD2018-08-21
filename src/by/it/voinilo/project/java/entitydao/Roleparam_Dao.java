@@ -34,7 +34,7 @@ public class Roleparam_Dao extends AbstractDao implements interfaceDao<Roleparam
         String sql = String.format(
                 "UPDATE `roleparam` SET `login`='%s',`password`='%s'," +
                         "`email`='%s',`roles_id`='%d'" +
-                        " WHERE `id`= %d",
+                        " WHERE `id`= '%d'",
                 role.getLogin(), role.getPassword(), role.getEmail(),
                 role.getRoles_id(), role.getId());
         return executeUpdate(sql);
@@ -83,7 +83,7 @@ public class Roleparam_Dao extends AbstractDao implements interfaceDao<Roleparam
 
                 user.setId(resultSet.getLong("id"));
                 user.setLogin(resultSet.getString("login"));
-                user.setLogin(resultSet.getString("password"));
+                user.setPassword(resultSet.getString("password"));
                 user.setEmail(resultSet.getString("email"));
                 user.setRoles_id(resultSet.getInt("roles_id"));
                 users.add(user);

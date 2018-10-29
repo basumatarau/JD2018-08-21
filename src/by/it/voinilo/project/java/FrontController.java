@@ -37,6 +37,7 @@ public class FrontController extends HttpServlet {
 
             nextCommand = command.execute(req, response);
         } catch (Exception e) {
+           req.setAttribute("printStackTrace", e.toString());
             nextCommand = null;
             view = Action.ERROR.getJsp();
         }

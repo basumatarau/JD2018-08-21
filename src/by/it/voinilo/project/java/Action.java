@@ -22,7 +22,8 @@ public enum Action {
     ERROR {{
 
         cmd =new CmdError();
-    }};
+    }},
+    RESET {{cmd= new CmdReset();}};
 
     public String getJsp(){ return "/"+this.cmd.toString().toLowerCase() +".jsp";}
     public Cmd cmd =new CmdError();

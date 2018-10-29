@@ -2,14 +2,11 @@
 <%@ include file="include/head.htm" %>
 <body>
 
+
+<div class="container" >
+
 <%@ include file="include/menu.htm" %>
-<div align="center">
-<p>Cmd Login: ${message}</p>
-
-
-
-
-<form class="form-horizontal">
+<form class="form-horizontal" action="do?command=Login" method="post">
 </br>
 </br>
 </br>
@@ -17,24 +14,25 @@
 </br>
 <fieldset>
 
+<hr>
+<p>${user}<br></p>
 
-
-
+<hr>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Login</label>
+  <label class="col-md-4 control-label" for="login">Login</label>
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+  <input id="login" name="login" type="text" value="testLogin" placeholder="" class="form-control input-md">
 
   </div>
 </div>
 
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="passwordinput">Password</label>
+  <label class="col-md-4 control-label" for="password">Password</label>
   <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
+    <input id="password" name="password" type="password" value="testPassword" placeholder="" class="form-control input-md">
 
   </div>
 </div>
@@ -43,7 +41,7 @@
 <div class="form-group" >
   <label class="col-md-4 control-label" for="submit" ></label>
   <div class="col-md-4" align="right">
-    <button id="submit" name="submit" class="btn btn-primary" >Submit</button>
+    <button id="submit" name="submit" class="btn btn-primary" >SignIn</button>
   </div>
 </div>
 

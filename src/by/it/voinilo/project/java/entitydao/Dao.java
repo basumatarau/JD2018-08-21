@@ -16,7 +16,7 @@ public class Dao {
         ad = new Ads_Dao();
     }
 
-    static Dao getDao() {
+    public  static Dao getDao() {
         if (instance == null) {
             synchronized (Dao.class) {
                 if (instance == null)
@@ -27,5 +27,7 @@ public class Dao {
         return instance;
 }
 
-        public void reset() {}
+        public void reset() {
+            Reset.main(new String[0]);
+        }
 }

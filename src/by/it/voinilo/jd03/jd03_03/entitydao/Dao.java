@@ -32,5 +32,7 @@ class Dao {
         return instance;
 }
 
-        public void reset() {}
+    public void reset() {
+        Reset.main(new String[0]);
+    }
 }
