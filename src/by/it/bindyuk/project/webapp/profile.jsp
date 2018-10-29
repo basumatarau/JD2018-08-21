@@ -3,42 +3,27 @@
 <body>
     <div class="container">
     <%@ include file="include/menu.htm" %>
+     <p>UserData: ${user}</p>
 
-    <form class="form-horizontal">
+     <p>UserTickets: ${tickets}</p>
+
+    <form class="form-horizontal" action="do?command=Profile" method="post">
+    <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
     <fieldset>
 
     <!-- Form Name -->
-    <legend>Form Name</legend>
-
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="login">Login</label>
-      <div class="col-md-4">
-      <input id="login" name="login" type="text" placeholder="" class="form-control input-md" required="">
-
-      </div>
-    </div>
-
-    <!-- Password input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="password">Password </label>
-      <div class="col-md-4">
-        <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
-
-      </div>
-    </div>
+    <legend>Profile</legend>
 
     <!-- Button -->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="enter"></label>
+      <label class="col-md-4 control-label" for="logout"></label>
       <div class="col-md-4">
-        <button id="enter" name="enter" class="btn btn-primary">Enter</button>
+        <button id="logout" name="logout" class="btn btn-warning">logout</button>
       </div>
     </div>
 
     </fieldset>
     </form>
-
 
     </div>
 </body>
