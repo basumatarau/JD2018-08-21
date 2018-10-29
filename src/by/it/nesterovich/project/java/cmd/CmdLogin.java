@@ -7,6 +7,7 @@ import by.it.nesterovich.project.java.utils.Form;
 import by.it.nesterovich.project.java.utils.Patterns;
 import by.it.nesterovich.project.java.utils.Utils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -28,7 +29,11 @@ public class CmdLogin extends Cmd {
             List<User> users = dao.user.getAll(where);
             if (users.size() > 0) {
                 HttpSession session = req.getSession();
+                session.setMaxInactiveInterval(30);
                 session.setAttribute("user", users.get(0));
+                Cookie cookie = new Cookie(login, password);
+                cookie.setMaxAge(60);
+                resp.addCookie(cookie);
                 return Action.USERCABINET.cmd;
             } else {
                 req.setAttribute("user", "no user: " + login + " or incorrect password");
