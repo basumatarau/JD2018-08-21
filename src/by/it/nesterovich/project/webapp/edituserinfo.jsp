@@ -5,19 +5,18 @@
 <div class="container">
     <%@ include file="include/menu.htm" %>
 
-    <form class="form-horizontal" action="do?command=SignUp" method="post">
+    <form class="form-horizontal" action="do?command=EditUserInfo" method="post">
         <fieldset>
 
             <!-- Form Name -->
-            <legend>Form SignUp</legend>
+            <legend>Edit info user</legend>
 
             <!-- Text input-->
             <div class="form-group">
                 <label class="col-md-4 control-label" for="login">Login</label>
                 <div class="col-md-4">
-                    <input id="login" name="login" value="TestLogin" type="text" placeholder=""
+                    <input id="login" name="login" value=${user.login} type="text" placeholder=""
                            class="form-control input-md" required="">
-
                 </div>
             </div>
 
@@ -25,9 +24,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="password">Password</label>
                 <div class="col-md-4">
-                    <input id="password" name="password" value="testpassword" type="password" placeholder=""
+                    <input id="password" name="password" value=${user.password} type="password" placeholder=""
                            class="form-control input-md" required="">
-
                 </div>
             </div>
 
@@ -35,9 +33,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="email">Email</label>
                 <div class="col-md-4">
-                    <input id="email" name="email" value="TestEmail@mail.ru" type="text" placeholder=""
+                    <input id="email" name="email" value=${user.email} type="text" placeholder=""
                            class="form-control input-md" required="">
-
                 </div>
             </div>
 
@@ -45,9 +42,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="firstName">First name</label>
                 <div class="col-md-4">
-                    <input id="firstName" name="firstName" value="TestFirstName" type="text" placeholder=""
+                    <input id="firstName" name="firstName" value=${user.firstName} type="text" placeholder=""
                            class="form-control input-md" required="">
-
                 </div>
             </div>
 
@@ -55,9 +51,8 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="lastName">Last name</label>
                 <div class="col-md-4">
-                    <input id="lastName" name="lastName" value="TestLastName" type="text" placeholder=""
+                    <input id="lastName" name="lastName" value=${user.lastName} type="text" placeholder=""
                            class="form-control input-md" required="">
-
                 </div>
             </div>
 
@@ -65,28 +60,21 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="phoneNumber">Phone number</label>
                 <div class="col-md-4">
-                    <input id="phoneNumber" name="phoneNumber" value="12345678" type="text" placeholder=""
+                    <input id="phoneNumber" name="phoneNumber" value=${user.phoneNumber} type="text" placeholder=""
                            class="form-control input-md" required="">
-
                 </div>
             </div>
 
             <!-- Button -->
             <div class="form-group">
-                <label class="col-md-4 control-label" for="signupsubmit"></label>
+                <label class="col-md-4 control-label" for="savesubmit"></label>
                 <div class="col-md-4">
-                    <button id="signupsubmit" name="signupsubmit" class="btn btn-success">SignUp</button>
+                    <button id="savesubmit" name="savesubmit" class="btn btn-success">Save</button>
                 </div>
             </div>
 
         </fieldset>
     </form>
 
-
-</div>
 </body>
 </html>
-
-
-
-

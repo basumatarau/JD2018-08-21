@@ -1,9 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <%@ include file="include/head.htm" %>
 <body>
 <div class="container">
     <%@ include file="include/menu.htm" %>
+        <legend>List film</legend>
+        <div><a href="do?command=CreateFilm">Create film</a></div>
 
     <form class="form-horizontal" action="do?command=ListFilm" method="get">
         <fieldset>
@@ -26,7 +29,7 @@
                             <div class=col-md-3>${film.genre}</div>
                             <div class=col-md-2>${film.yearOfIssue}</div>
                             <div class=col-md-1>${film.duration}</div>
-                            <div class=col-md-2>List cinema</div>
+                            <div class=col-md-2><a href="do?command=ListCinema">List cinema</a></div>
                         </div>
                     </tr>
                 </c:forEach>

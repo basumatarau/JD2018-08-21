@@ -1,4 +1,4 @@
-package by.it.nesterovich.project.java.ulils;
+package by.it.nesterovich.project.java.utils;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 

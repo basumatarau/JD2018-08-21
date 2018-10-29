@@ -1,7 +1,7 @@
 package by.it.nesterovich.project.java.dao;
 
 import by.it.nesterovich.project.java.beans.Film;
-import by.it.nesterovich.project.java.ulils.ConnectionCreator;
+import by.it.nesterovich.project.java.utils.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

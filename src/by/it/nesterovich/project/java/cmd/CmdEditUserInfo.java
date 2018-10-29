@@ -5,26 +5,32 @@ import by.it.nesterovich.project.java.beans.User;
 import by.it.nesterovich.project.java.dao.Dao;
 import by.it.nesterovich.project.java.utils.Form;
 import by.it.nesterovich.project.java.utils.Patterns;
+import by.it.nesterovich.project.java.utils.Utils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CmdSignUp extends Cmd {
+public class CmdEditUserInfo extends Cmd {
 
     @Override
-    public Cmd execute(HttpServletRequest req, HttpServletResponse resp)
-            throws Exception {
+    public Cmd execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         if (Form.isPost(req)) {
+            User user = Utils.getUser(req);
             String login = Form.getString(req.getParameter("login"), Patterns.LOGIN);
             String email = Form.getString(req.getParameter("email"), Patterns.EMAIL);
             String password = Form.getString(req.getParameter("password"), Patterns.PASSWORD);
             String firstName = Form.getString(req.getParameter("firstName"), Patterns.FIRSTNAME);
             String lastName = Form.getString(req.getParameter("lastName"), Patterns.LASTNAME);
             int phoneNumber = Integer.parseInt(Form.getString(req.getParameter("phoneNumber"), Patterns.PHONENUMBER));
-            User user = new User(0, login, password, email, firstName, lastName, phoneNumber, 2);
+            user.setLogin(login);
+            user.setEmail(email);
+            user.setPassword(password);
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setPhoneNumber(phoneNumber);
             Dao dao = Dao.getDao();
-            dao.user.create(user);
-            return Action.LOGIN.cmd;
+            dao.user.update(user);
+            return Action.USERCABINET.cmd;
         }
         return null;
     }

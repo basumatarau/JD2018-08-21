@@ -19,6 +19,24 @@ public enum Action {
     LISTFILM {{
         cmd = new CmdListFilm();
     }},
+    LISTCINEMA {{
+        cmd = new CmdListCinema();
+    }},
+    USERCABINET {{
+        cmd = new CmdUserCabinet();
+    }},
+    EDITUSERINFO {{
+        cmd = new CmdEditUserInfo();
+    }},
+    RESERVEDTICKET {{
+        cmd = new CmdReservedTicket();
+    }},
+    CREATEFILM {{
+        cmd = new CmdCreateFilm();
+    }},
+    CREATECINEMA {{
+        cmd = new CmdCreateCinema();
+    }},
     ERROR {{
         cmd = new CmdError();
     }};
