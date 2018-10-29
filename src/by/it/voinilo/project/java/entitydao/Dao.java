@@ -1,12 +1,7 @@
-package by.it.voinilo.jd03.jd03_03.entitydao;
+package by.it.voinilo.project.java.entitydao;
 
 
-import by.it.akhmelev.jd03_03.InterfaceDao;
-import by.it.voinilo.jd03.jd03_03.beans.Ads;
-import by.it.voinilo.jd03.jd03_03.beans.Roles;
-import by.it.voinilo.jd03.jd03_03.beans.Roleparam;
-
-class Dao {
+public class Dao {
     private static Dao instance;
 
     public Roles_Dao role;
@@ -21,7 +16,7 @@ class Dao {
         ad = new Ads_Dao();
     }
 
-    static Dao getDao() {
+    public  static Dao getDao() {
         if (instance == null) {
             synchronized (Dao.class) {
                 if (instance == null)
@@ -32,7 +27,7 @@ class Dao {
         return instance;
 }
 
-    public void reset() {
-        Reset.main(new String[0]);
-    }
+        public void reset() {
+            Reset.main(new String[0]);
+        }
 }
