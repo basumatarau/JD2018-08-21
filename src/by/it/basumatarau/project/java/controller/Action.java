@@ -1,4 +1,4 @@
-package by.it.basumatarau.project.java;
+package by.it.basumatarau.project.java.controller;
 
 import by.it.basumatarau.project.java.commands.*;
 
@@ -11,6 +11,10 @@ public enum Action {
     LOGIN {{
         this.command = new CmdLogin();
         this.jsp = "/login.jsp";
+    }},
+    PROFILE {{
+        this.command = new CmdProfile();
+        this.jsp = "/profile.jsp";
     }},
     ERROR {{
         this.command = new CmdError();

@@ -1,4 +1,4 @@
-package by.it.basumatarau.project.java;
+package by.it.basumatarau.project.java.controller;
 
 import by.it.basumatarau.project.java.commands.Cmd;
 import by.it.basumatarau.project.java.customDAO.DB_init;
@@ -8,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class FrontController extends HttpServlet {
@@ -42,7 +41,9 @@ public class FrontController extends HttpServlet {
         String view = action.jsp;
         Cmd nextCommand;
 
+
         try{
+            SessionResolver.resolve(req, resp);
             nextCommand = command.execute(req, resp);
         }
         catch (Exception e){

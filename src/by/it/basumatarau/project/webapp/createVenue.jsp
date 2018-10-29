@@ -1,9 +1,11 @@
-<html lang="en">
 <%@ include file="include/head.htm" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
+<html lang="en">
 <body>
 
 <div class="container">
-    <%@ include file="include/menu.htm" %>
+    <%@ include file="include/menu.jsp" %>
     <p>Cmd CreateVenue: ${message}</p>
 
     <form class="form-horizontal" action="do?command=createVenue" method="post">
@@ -16,7 +18,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="nameinput">Venue Name</label>
               <div class="col-md-4">
-              <input id="nameinput" name="nameinput" type="text" placeholder="" class="form-control input-md" required="">
+              <input id="nameinput" name="nameinput" type="text" placeholder="" value="testVenueName" class="form-control input-md" required="">
 
               </div>
             </div>
@@ -25,7 +27,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="descriptioninput">Venue Description</label>
               <div class="col-md-4">
-              <input id="descriptioninput" name="descriptioninput" type="text" placeholder="" class="form-control input-md" required="">
+              <input id="descriptioninput" name="descriptioninput" type="text" placeholder="" value="testDescription" class="form-control input-md" required="">
 
               </div>
             </div>
@@ -34,7 +36,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="placenameinput">Place Name</label>
               <div class="col-md-4">
-              <input id="placenameinput" name="placenameinput" type="text" placeholder="" class="form-control input-md" required="">
+              <input id="placenameinput" name="placenameinput" type="text" placeholder="" value="testPlaceName" class="form-control input-md" required="">
 
               </div>
             </div>
@@ -43,7 +45,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="addressinput">Address</label>
               <div class="col-md-4">
-              <input id="addressinput" name="addressinput" type="text" placeholder="" class="form-control input-md" required="">
+              <input id="addressinput" name="addressinput" type="text" placeholder="" value="testaddress" class="form-control input-md" required="">
 
               </div>
             </div>
@@ -52,9 +54,29 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="feeinput">Fee</label>
               <div class="col-md-4">
-              <input id="feeinput" name="feeinput" type="text" placeholder="" class="form-control input-md" required="">
+              <input id="feeinput" name="feeinput" type="text" placeholder="" value="5.5" class="form-control input-md" required="">
 
               </div>
+            </div>
+
+            <!-- DateTime input -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="datetimeinput">Date and time</label>
+                <div class="col-md-4">
+                    <div class='input-group date' id='datetimepicker1' showMeridian="false" language="ru">
+                        <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker1').datetimepicker({
+                                            format: 'YYYY-MM-DD HH:mm:ss',
+                                        });
+                                });
+                        </script>
+                        <input id="datetimeinput" name="datetimeinput" type="text" class="form-control input-md" value="2018-11-06 12:25:00" required=""/>
+                        <div class="input-group-addon">
+                            <div class="glyphicon glyphicon-calendar"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Button -->

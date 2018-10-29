@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
 <html lang="en">
@@ -5,8 +6,8 @@
 <body>
 
 <div class="container">
-    <%@ include file="include/menu.htm" %>
-    <p>Cmd ListVenues: ${message}</p>
+    <%@ include file="include/menu.jsp" %>
+    <p>All venues for: ${user.login}</p>
 
     <c:forEach items="${venues}" var="venue">
         <div class="jumbotron">
