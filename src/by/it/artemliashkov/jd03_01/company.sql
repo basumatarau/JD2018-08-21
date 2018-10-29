@@ -38,8 +38,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Agents` (
   CONSTRAINT `fk_Users_Role`
     FOREIGN KEY (`Role_id`)
     REFERENCES `mydb`.`Role` (`Role_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
