@@ -31,9 +31,12 @@ public class CmdLogin extends Cmd {
                 HttpSession session = req.getSession();
                 session.setMaxInactiveInterval(30);
                 session.setAttribute("user", users.get(0));
-                Cookie cookie = new Cookie(login, password);
-                cookie.setMaxAge(60);
-                resp.addCookie(cookie);
+                Cookie cookieLogin = new Cookie("login", login);
+                Cookie cookiePassword = new Cookie("password", password);
+                cookieLogin.setMaxAge(60);
+                cookiePassword.setMaxAge(60);
+                resp.addCookie(cookieLogin);
+                resp.addCookie(cookiePassword);
                 return Action.USERCABINET.cmd;
             } else {
                 req.setAttribute("user", "no user: " + login + " or incorrect password");
