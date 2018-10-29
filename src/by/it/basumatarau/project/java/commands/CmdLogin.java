@@ -3,8 +3,10 @@ package by.it.basumatarau.project.java.commands;
 import by.it.basumatarau.project.java.beans.User;
 import by.it.basumatarau.project.java.controller.Action;
 import by.it.basumatarau.project.java.controller.FormHandler;
+import by.it.basumatarau.project.java.controller.Util;
 import by.it.basumatarau.project.java.customDAO.DAO;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -24,10 +26,24 @@ public class CmdLogin extends Cmd {
             );
 
             List<User> users = DAO.getDAO().user.getAll(sqlStatement);
+
             if(users.size()==1){
+                User user = users.get(0);
                 HttpSession session = request.getSession(true);
-                session.setAttribute("user", users.get(0));
+
+                session.setMaxInactiveInterval(30);
+                session.setAttribute("user", user);
+
+                Cookie userID = new Cookie("userID", Long.toString(user.getId()));
+                Cookie pwdHash = new Cookie("pwdHash", Util.getPwdHash(user.getPassword(), user.getEmail()));
+                userID.setMaxAge(60);
+                pwdHash.setMaxAge(60);
+                response.addCookie(userID);
+                response.addCookie(pwdHash);
+
                 return Action.PROFILE.command;
+            }else {
+                request.setAttribute("message", "Wrong username or password");
             }
 
         }

@@ -6,7 +6,7 @@
 
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-
+    <p>${message}</p>
     <form class="form-horizontal" action="do?command=Login" method="post">
     <fieldset>
     <p>${user}<br></p>

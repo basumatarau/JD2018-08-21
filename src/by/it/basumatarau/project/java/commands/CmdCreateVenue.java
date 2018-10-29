@@ -5,12 +5,12 @@ import by.it.basumatarau.project.java.beans.Place;
 import by.it.basumatarau.project.java.beans.Venue;
 import by.it.basumatarau.project.java.beans.User;
 import by.it.basumatarau.project.java.controller.FormHandler;
+import by.it.basumatarau.project.java.controller.Util;
 import by.it.basumatarau.project.java.customDAO.DAO;
 import by.it.basumatarau.project.java.customDAO.PlaceDAO;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
@@ -20,8 +20,7 @@ public class CmdCreateVenue extends Cmd {
     public Cmd execute(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ParseException {
 
-        HttpSession session = request.getSession(false);
-        Object user = session.getAttribute("user");
+        User user = Util.getUser(request);
         if(user==null){
             return Action.LOGIN.command;
         }
@@ -48,7 +47,7 @@ public class CmdCreateVenue extends Cmd {
                     FormHandler.getString(request, "descriptioninput", RegExPatterns.VENUE_DESCRIPTION),
                     FormHandler.getTimestamp(request, "datetimeinput"),
                     FormHandler.getFloat(request, "feeinput"),
-                    ((User)user).getId(),
+                    user.getId(),
                     place.getId()
             );
 

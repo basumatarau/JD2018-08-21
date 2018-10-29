@@ -41,7 +41,9 @@ public class FrontController extends HttpServlet {
         String view = action.jsp;
         Cmd nextCommand;
 
+
         try{
+            SessionResolver.resolve(req, resp);
             nextCommand = command.execute(req, resp);
         }
         catch (Exception e){
