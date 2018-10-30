@@ -49,7 +49,7 @@ public class FrontController extends HttpServlet {
         catch (Exception e){
             nextCommand = null;
             view = Action.ERROR.jsp;
-            req.setAttribute("printStackTrace", e.toString());
+            req.setAttribute("printStackTrace", e.getMessage());
         }
 
         if(nextCommand==null || nextCommand==command){

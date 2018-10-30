@@ -43,6 +43,19 @@ public class FormHandler {
         }
     }
 
+    public static Long getLong(HttpServletRequest request, String param)
+            throws ParseException{
+        String attrValue = request.getParameter(param);
+        try {
+            return Long.parseLong(attrValue);
+        }catch (NumberFormatException e){
+            throw new ParseException(
+                    String.format("Field %s doesn't match the number format pattern", param),
+                    0
+            );
+        }
+    }
+
     public static Double getDouble(HttpServletRequest request, String param)
             throws ParseException{
         String attrValue = request.getParameter(param);

@@ -40,6 +40,9 @@ class SessionResolver {
         if(usrID!=null && digest!=null){
             try{
                 user = DAO.getDAO().user.read(Long.parseLong(usrID));
+                if(user==null){
+                    return;
+                }
                 String digestPwd= Util.getPwdHash(user.getPassword(), user.getEmail());
 
                 if(digestPwd.equals(digest)) {

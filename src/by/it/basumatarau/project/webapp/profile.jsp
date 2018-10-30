@@ -7,21 +7,8 @@
 
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <p>PROFILE: ${user.login}</p>
-
-    <form class="form-horizontal" action="do?command=Profile" method="post">
-        <fieldset>
-
-            <!-- Button -->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="logoutbutton"></label>
-              <div class="col-md-4">
-                <button id="logoutbutton" name="logoutbutton" class="btn btn-danger">Logout</button>
-              </div>
-            </div>
-
-        </fieldset>
-    </form>
+    <p>User login: ${user.login}</p>
+    <p>User email: ${user.email}</p>
 
     <div class="container">
         <c:forEach items="${usrVenues}" var="venue">
