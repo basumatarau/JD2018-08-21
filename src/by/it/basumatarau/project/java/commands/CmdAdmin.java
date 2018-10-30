@@ -38,6 +38,7 @@ public class CmdAdmin extends Cmd {
                     email,
                     roles_id
             );
+
             if(request.getParameter("updateUser")!=null){
                 DAO.getDAO().user.update(user);
             }
