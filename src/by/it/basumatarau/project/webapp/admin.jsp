@@ -38,7 +38,7 @@
                     <div class="col-md-2">
                         <select class="form-control input-md" id="roles_id" name="roles_id">
                             <c:forEach items="${roles}" var="role">
-                                <option value="${role.id}" role=${role.id} ${role.id==user.roles_Id?"selected":""}>
+                                <option class="form-control input-md" value="${role.id}" role=${role.id} ${role.id==user.roles_Id?"selected":""}>
                                     ${role.role}
                                 </option>
                             </c:forEach>

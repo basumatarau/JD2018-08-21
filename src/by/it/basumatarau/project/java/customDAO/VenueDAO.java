@@ -1,5 +1,6 @@
 package by.it.basumatarau.project.java.customDAO;
 
+import by.it.basumatarau.project.java.beans.Place;
 import by.it.basumatarau.project.java.beans.Venue;
 import by.it.basumatarau.project.java.connection.ConnectionCreator;
 
@@ -98,5 +99,76 @@ public class VenueDAO extends DAO implements InterfaceDAO<Venue> {
             }
         }
         return result;
+    }
+
+    public void getAllDetailed(String sqlWHERE, List<Venue> venues, List<Place> places) throws SQLException {
+
+        try(Connection connection = ConnectionCreator.getConnection();
+            Statement statement = connection.createStatement()){
+
+            String sqlQuery = String.format(
+                    " SELECT Venues.ID, Venues.Name, Venues.Description, Venues.OpeningDeteTime, Venues.Fee, " +
+                            "Venues.Users_ID, Venues.Places_ID, Places.Name, Places.Address " +
+                            " FROM Venues LEFT JOIN Places ON Venues.Places_ID = Places.ID %s ;",
+                    sqlWHERE
+            );
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+
+            while(resultSet.next()){
+                venues.add(
+                        new Venue(resultSet.getLong("ID"),
+                                resultSet.getString("Name"),
+                                resultSet.getString("Description"),
+                                resultSet.getTimestamp("OpeningDeteTime"),
+                                resultSet.getFloat("Fee"),
+                                resultSet.getLong("Users_ID"),
+                                resultSet.getLong("Places_ID"))
+                );
+                places.add(
+                        new Place(
+                                resultSet.getLong("ID"),
+                                resultSet.getString("Name"),
+                                resultSet.getString("Address")
+                        )
+                );
+            }
+        }
+    }
+
+    public void searchVenues(String pattern, List<Venue> venues, List<Place> places) throws SQLException {
+
+        try(Connection connection = ConnectionCreator.getConnection();
+            Statement statement = connection.createStatement()){
+
+            String sqlQuery = String.format(
+                    " SELECT Venues.ID, Venues.Name, Venues.Description, Venues.OpeningDeteTime, Venues.Fee, " +
+                            "Venues.Users_ID, Venues.Places_ID, Places.Name, Places.Address " +
+                            " FROM Venues LEFT JOIN Places ON Venues.Places_ID = Places.ID WHERE " +
+                            "(Venues.Name REGEXP '%s') OR (Venues.Description REGEXP '%s') OR " +
+                            "(Venues.OpeningDeteTime REGEXP '%s') OR (Places.Name REGEXP '%s') OR " +
+                            "(Places.Address REGEXP '%s') ;",
+                    pattern, pattern, pattern, pattern, pattern
+            );
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+
+            while(resultSet.next()){
+                venues.add(
+                        new Venue(resultSet.getLong("ID"),
+                                resultSet.getString("Name"),
+                                resultSet.getString("Description"),
+                                resultSet.getTimestamp("OpeningDeteTime"),
+                                resultSet.getFloat("Fee"),
+                                resultSet.getLong("Users_ID"),
+                                resultSet.getLong("Places_ID"))
+                );
+                places.add(
+                        new Place(
+                                resultSet.getLong("ID"),
+                                resultSet.getString("Name"),
+                                resultSet.getString("Address")
+                        )
+                );
+            }
+        }
     }
 }

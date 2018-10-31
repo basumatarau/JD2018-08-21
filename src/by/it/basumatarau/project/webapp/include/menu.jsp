@@ -49,9 +49,9 @@
 
         <form class="navbar-form navbar-right" action="do?command=Search" method="post">
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" id="searchPattern" name="searchPattern" class="form-control" placeholder="Search">
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" id="searchSubmit" name="searchSubmit" class="btn btn-default">Submit</button>
         </form>
 
     </div>

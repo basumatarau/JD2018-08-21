@@ -20,7 +20,7 @@ class SessionResolver {
         User user = Util.getUser(request);
         if(user != null){
             HttpSession session = request.getSession();
-            session.setMaxInactiveInterval(30);
+            session.setMaxInactiveInterval(30*30);
             return;
         }
 
@@ -49,7 +49,7 @@ class SessionResolver {
                 String digestPwd= Util.getPwdHash(user.getPassword(), user.getEmail());
 
                 if(digestPwd.equals(digest)) {
-                    request.getSession().setMaxInactiveInterval(30);
+                    request.getSession().setMaxInactiveInterval(30*30);
                     request.getSession().setAttribute("user", user);
                 }
 

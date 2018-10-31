@@ -7,23 +7,10 @@
 
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <p>User login: ${user.login}</p>
-    <p>User email: ${user.email}</p>
-
-    <div class="container">
-        <c:forEach items="${usrVenues}" var="venue">
-            <div class="jumbotron">
-                  <h1 class="display-4">${venue.name}</h1>
-                  <p class="lead">${venue.description}</p>
-                  <hr class="my-4">
-                  <p>Fee: ${venue.fee}</p>
-            </div>
-        </c:forEach>
-    </div>
+    <p>Search results for <b>${q}</b>:</p>
 </div>
 
 <div class="container">
-    <h1>My venues</h>
     <div class="container">
         <table class="table">
             <thead>
@@ -34,7 +21,6 @@
                     <th scope="col">Fee</th>
                     <th scope="col">Place Name</th>
                     <th scope="col">Address</th>
-                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -51,12 +37,6 @@
                                     <td name="placeAddress" value="${place.address}">${place.address}</td>
                                 </c:if>
                             </c:forEach>
-                            <td>
-                                <button id="deleteVenue" value="deleteVenue" name="deleteVenue"
-                                 class="btn btn-danger">
-                                    delete
-                                </button>
-                            </td>
                         </tr>
                     </form>
                 </c:forEach>
@@ -68,5 +48,3 @@
 
 </body>
 </html>
-
-

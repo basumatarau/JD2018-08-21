@@ -31,13 +31,13 @@ public class CmdLogin extends Cmd {
                 User user = users.get(0);
                 HttpSession session = request.getSession(true);
 
-                session.setMaxInactiveInterval(30);
+                session.setMaxInactiveInterval(30*30);
                 session.setAttribute("user", user);
 
                 Cookie userID = new Cookie("userID", Long.toString(user.getId()));
                 Cookie pwdHash = new Cookie("pwdHash", Util.getPwdHash(user.getPassword(), user.getEmail()));
-                userID.setMaxAge(60);
-                pwdHash.setMaxAge(60);
+                userID.setMaxAge(60*60);
+                pwdHash.setMaxAge(60*60);
                 response.addCookie(userID);
                 response.addCookie(pwdHash);
 
