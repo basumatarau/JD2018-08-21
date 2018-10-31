@@ -6,6 +6,7 @@ import by.it.basumatarau.project.java.controller.FormHandler;
 import by.it.basumatarau.project.java.controller.Util;
 import by.it.basumatarau.project.java.customDAO.DAO;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ public class CmdAdmin extends Cmd {
         User admin = Util.getUser(request);
         if(admin==null){
             return Action.LOGIN.command;
+            //administrator status to be checked here...("user" to be replaced by "admin")
         }else if(!DAO.getDAO().role.read(admin.getRoles_Id()).getRole().equalsIgnoreCase("user")){
             return Action.INDEX.command;
         }
@@ -27,9 +29,8 @@ public class CmdAdmin extends Cmd {
             String login = FormHandler.getString(request, "login");
             String email = FormHandler.getString(request, "email");
             Integer roles_id = FormHandler.getInt(request, "roles_id");
-            Long id = FormHandler.getLong(request, "id");
             String password = FormHandler.getString(request, "password");
-
+            Long id = FormHandler.getLong(request, "id");
 
             User user = new User(
                     id,
@@ -40,10 +41,22 @@ public class CmdAdmin extends Cmd {
             );
 
             if(request.getParameter("updateUser")!=null){
-                DAO.getDAO().user.update(user);
+                if(DAO.getDAO().user.update(user)){
+                    if(admin.getId()==user.getId()){
+                        request.getSession(false).setAttribute("user", user);
+                    }
+                }
+
             }
             if(request.getParameter("deleteUser")!=null){
-                DAO.getDAO().user.delete(user);
+                if(DAO.getDAO().user.delete(user)){
+                    if(admin.getId()==user.getId()){
+                        request.getSession().removeAttribute("user");
+                        response.addCookie(new Cookie("pwdHash",""));
+                        request.getSession(false).invalidate();
+                        return Action.LOGIN.command;
+                    }
+                }
             }
         }
 

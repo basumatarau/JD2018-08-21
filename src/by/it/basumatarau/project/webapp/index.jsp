@@ -3,10 +3,10 @@
 <html lang="en">
 <%@ include file="include/head.htm" %>
 <body>
-
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <p>INDEX: ${message}</p>
+    <p>INDEX ${message}</p>
 </div>
+
 </body>
 </html>

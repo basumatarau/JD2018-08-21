@@ -11,16 +11,6 @@
         <servlet-class>by.it.basumatarau.project.java.controller.FrontController</servlet-class>
     </servlet>
 
-    <servlet>
-        <servlet-name>HelloWorld</servlet-name>
-        <servlet-class>by.it.basumatarau.project.java.controller.HelloServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>HelloWorld</servlet-name>
-        <url-pattern>/hello</url-pattern>
-    </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>FrontEndController</servlet-name>
         <url-pattern>/do</url-pattern>

@@ -3,7 +3,7 @@
 
 <!-- Menu: Buttons -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href=".">Home</a>
+    <a class="navbar-brand" href="do?command=Index">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -47,7 +47,7 @@
             </form>
         </c:if>
 
-        <form class="navbar-form navbar-right" action="do?command=Search">
+        <form class="navbar-form navbar-right" action="do?command=Search" method="post">
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Search">
               </div>

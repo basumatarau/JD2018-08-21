@@ -24,7 +24,7 @@
 
                 <div class="row">
                     <div class="col-md-1">
-                        <input name="id" class="form-control input-md" disabled value="${user.id}"/>
+                        <input name="id" class="form-control input-md" value="${user.id}"/>
                     </div>
                     <div class="col-md-2">
                         <input id="login" class="form-control input-md" name="login" value="${user.login}"/>

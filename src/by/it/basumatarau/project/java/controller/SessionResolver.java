@@ -28,6 +28,9 @@ class SessionResolver {
         String digest = null;
 
         Cookie[] cookies = request.getCookies();
+        if(cookies==null){
+            return;
+        }
         for (Cookie cookie : cookies) {
             if(cookie.getName().equals("userID")){
                 usrID = cookie.getValue();
