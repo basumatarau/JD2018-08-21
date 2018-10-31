@@ -1,4 +1,11 @@
-<form class="form-horizontal">
+<html>
+<%@ include file="include/head.htm" %>
+<body>
+     <div class="container">
+     <%@ include file="include/menu.htm" %>
+     <form class="form-horizontal" action="do?command=Ticket" method="post">
+     <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
 <fieldset>
 
 <!-- Form Name -->
@@ -6,47 +13,50 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Transport Type</label>  
+  <label class="col-md-4 control-label" for="transport">Transport</label>
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="placeholder" class="form-control input-md">
-    
-  </div>
-</div>
-
-<!-- Search input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="searchinput">From</label>
-  <div class="col-md-4">
-    <input id="searchinput" name="searchinput" type="search" placeholder="placeholder" class="form-control input-md">
-    
-  </div>
-</div>
-
-<!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="passwordinput">To</label>
-  <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="placeholder" class="form-control input-md">
+  <input id="transport" name="transport" type="text" placeholder="" class="form-control input-md" required="">
     
   </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Date</label>  
+  <label class="col-md-4 control-label" for="from">From</label>
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="placeholder" class="form-control input-md">
+  <input id="from" name="from" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="to">To</label>
+  <div class="col-md-4">
+  <input id="to" name="to" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="when">When</label>
+  <div class="col-md-4">
+  <input id="when" name="when" type="text" placeholder="" class="form-control input-md" required="">
     
   </div>
 </div>
 
 <!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="Registration"></label>
+  <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-md-4">
-    <button id="Registration" name="Registration" class="btn btn-primary">BUY</button>
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">BUY</button>
   </div>
 </div>
 
 </fieldset>
 </form>
+</div>
+</body>
+</html>

@@ -22,12 +22,12 @@ public class TestDao {
     private Role role = new Role(0, "test");
     private Route route = new Route(0, "New York");
     private Ticket ticket = new Ticket(0, "TEST",
-            1, 2, new Timestamp(66666666),2);
+            1, 2, new Timestamp(666666669999L),2);
 
     //==================================================================================================================
     //Тест операций CRUD для USER
     @Test
-    public void TestUserCRUD() throws SQLException {
+    public void TestUserCRUD() throws SQLException, IllegalAccessException {
         assertTrue(dao.user.create(user));
         assertNotNull(dao.user.read(user.getId()));
         user.setLogin("testtest");
@@ -38,7 +38,7 @@ public class TestDao {
     //==================================================================================================================
     //Тест операций CRUD для ROLE
     @Test
-    public void TestRoleCRUD() throws SQLException {
+    public void TestRoleCRUD() throws SQLException, IllegalAccessException {
         assertTrue(dao.role.create(role));
         assertNotNull(dao.role.read(role.getId()));
         role.setRole("TESTTEST");
@@ -49,7 +49,7 @@ public class TestDao {
     //==================================================================================================================
     //Тест операций CRUD для ROUTE
     @Test
-    public void TestRouteCRUD() throws SQLException {
+    public void TestRouteCRUD() throws SQLException, IllegalAccessException {
         assertTrue(dao.route.create(route));
         assertNotNull(dao.route.read(route.getId()));
         route.setCity("TESTTEST");
@@ -60,7 +60,7 @@ public class TestDao {
     //==================================================================================================================
     //Тест операций CRUD для TICKET
     @Test
-    public void TestTicketCRUD() throws SQLException {
+    public void TestTicketCRUD() throws SQLException, IllegalAccessException {
         assertTrue(dao.ticket.create(ticket));
         assertNotNull(dao.ticket.read(ticket.getId()));
         ticket.setTransport("PARAPLAN");
