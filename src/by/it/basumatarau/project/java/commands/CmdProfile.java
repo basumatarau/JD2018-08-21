@@ -7,7 +7,6 @@ import by.it.basumatarau.project.java.controller.Action;
 import by.it.basumatarau.project.java.controller.FormHandler;
 import by.it.basumatarau.project.java.controller.Util;
 import by.it.basumatarau.project.java.customDAO.DAO;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,13 +36,11 @@ public class CmdProfile extends Cmd {
 
             //to be fixed...
             if(request.getParameter("deleteVenue")!=null){
-                Long id = FormHandler.getLong(request, "venueRow");
+                Long id = FormHandler.getLong(request, "venueID");
                 String venueName = FormHandler.getString(request, "venueName");
-                String description = FormHandler.getString(request, "description");
-                Timestamp openingDeteTime = FormHandler.getTimestamp(request, "openingDeteTime");
+                String description = FormHandler.getString(request, "venueDescription");
+                Timestamp openingDeteTime = FormHandler.getTimestamp(request, "venueOpeningDeteTime");
                 Float fee = FormHandler.getFloat(request, "fee");
-                String placeName = FormHandler.getString(request, "placeName");
-                String placeAddress = FormHandler.getString(request, "placeAddress");
 
                 DAO.getDAO().venue.delete(
                         new Venue(
@@ -58,7 +55,6 @@ public class CmdProfile extends Cmd {
                 );
             }
         }
-
 
         String sqlStatement = String.format(" WHERE Venues.Users_ID = %d ", user.getId());
         if(DAO.getDAO().role.read(user.getRoles_Id()).getRole().equalsIgnoreCase("admin")){

@@ -40,15 +40,22 @@
             <tbody>
                 <c:forEach items="${userVenues}" var="venue">
                     <form class="update-venue-${venue.id}" action="do?command=Profile" method="post">
-                        <tr name="venueRow" value="${venue.id}">
-                            <td name="venueName" value="${venue.name}">${venue.name}</td>
-                            <td name="description" value="${venue.description}">${venue.description}</td>
-                            <td name="openingDeteTime" value="${venue.openingDeteTime}">${venue.openingDeteTime}</td>
-                            <td name="fee" value="${venue.fee}">${venue.fee}</td>
+                        <tr>
+                            <input name="venueID" type="hidden" value="${venue.id}">
+                            <input name="venueName" type="hidden" value="${venue.name}">
+                            <td>${venue.name}</td>
+                            <input name="venueDescription" type="hidden" value="${venue.description}"/>
+                            <td>${venue.description}</td>
+                            <input name="venueOpeningDeteTime" type="hidden" value="${venue.openingDeteTime}"/>
+                            <td>${venue.openingDeteTime}</td>
+                            <input name="fee" type="hidden" value="${venue.fee}"/>
+                            <td>${venue.fee}</td>
                             <c:forEach items="${venuePlaces}" var="place">
                                 <c:if test = "${place.id == venue.id}">
-                                    <td name="placeName" value="${place.name}">${place.name}</td>
-                                    <td name="placeAddress" value="${place.address}">${place.address}</td>
+                                    <input name="placeName" type="hidden" value="${venue.users_Id}"/>
+                                    <td>${place.name}</td>
+                                    <input name="placeAddress" type="hidden" value="${venue.places_Id}"/>
+                                    <td>${place.address}</td>
                                 </c:if>
                             </c:forEach>
                             <td>
