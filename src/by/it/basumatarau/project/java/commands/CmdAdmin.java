@@ -20,7 +20,7 @@ public class CmdAdmin extends Cmd {
         User admin = Util.getUser(request);
         if(admin==null){
             return Action.LOGIN.command;
-            //administrator status to be checked here...("user" to be replaced by "admin")
+            //todo administrator account permissions to be checked here...("user" is to be replaced by "admin")
         }else if(!DAO.getDAO().role.read(admin.getRoles_Id()).getRole().equalsIgnoreCase("user")){
             return Action.INDEX.command;
         }
@@ -46,8 +46,8 @@ public class CmdAdmin extends Cmd {
                         request.getSession(false).setAttribute("user", user);
                     }
                 }
-
             }
+
             if(request.getParameter("deleteUser")!=null){
                 if(DAO.getDAO().user.delete(user)){
                     if(admin.getId()==user.getId()){

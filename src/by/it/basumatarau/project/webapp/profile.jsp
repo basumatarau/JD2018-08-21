@@ -8,8 +8,37 @@
 
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <p>User login: ${user.login}</p>
-    <p>User email: ${user.email}</p>
+    <h1>My profile</h1>
+    <div class="container">
+            <form class="update-user" action="do?command=Profile" method="post">
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <input id="login" class="form-control input-md" name="login" value="${user.login}"/>
+                    </div>
+                    <div class="col-md-2">
+                        <input id="password" class="form-control input-md" name="password" value="${user.password}"/>
+                    </div>
+                    <div class="col-md-3">
+                        <input id="email" class="form-control input-md" name="email" value="${user.email}"/>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-control input-md" id="roles_id" name="roles_id">
+                            <c:forEach items="${roles}" var="role">
+                                <option class="form-control input-md" value="${role.id}" role=${role.id} ${role.id==user.roles_Id?"selected":""}>
+                                    ${role.role}
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <button id="updateProfile" value="updateProfile" name="updateProfile" class="btn btn-success">
+                            Update Profile
+                        </button>
+                    </div>
+                </div>
+            </form>
+    </div>
 </div>
 
 <div class="container">

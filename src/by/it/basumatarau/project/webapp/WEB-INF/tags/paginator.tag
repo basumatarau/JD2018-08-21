@@ -76,7 +76,7 @@
 %>
 <div class="container">
 <div class="text-center">
-    <ul class="pagination ">
+    <ul class="pagination">
         <c:if test="${currentPage > 1}">
             <li class="page-item ${prevAttr}">
                 <a class="page-link " href="do?command=${command}&${urlPrefix}${currentPage - 1}">Previous</a>

@@ -12,6 +12,8 @@ import java.util.List;
 public class CmdIndex extends Cmd {
     @Override
     public Cmd execute(HttpServletRequest request, HttpServletResponse response)throws SQLException, ParseException {
+        Long count = DAO.getDAO().venue.getCount("");
+        request.setAttribute("count", count);
         return null;
     }
 }

@@ -53,6 +53,27 @@ public class CmdProfile extends Cmd {
                         )
                 );
             }
+            //todo finalize the func...
+            if(request.getParameter("updateProfile")!=null){
+                String login = FormHandler.getString(request, "login");
+                String email = FormHandler.getString(request, "email");
+                Integer roles_id = FormHandler.getInt(request, "roles_id");
+                String password = FormHandler.getString(request, "password");
+
+                User updatedUser = new User(
+                        user.getId(),
+                        login,
+                        password,
+                        email,
+                        roles_id
+                );
+
+                if(DAO.getDAO().user.update(updatedUser)){
+                    request.getSession().setAttribute("user", updatedUser);
+                }
+            }
+
+
         }
 
         int itmesPerPage = 10;
@@ -90,7 +111,7 @@ public class CmdProfile extends Cmd {
         request.setAttribute("totalCount", count);
         request.setAttribute("currentPage", startPage);
 
-
+        request.setAttribute("roles", DAO.getDAO().role.getAll(""));
 
         return null;
     }
