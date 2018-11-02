@@ -6,7 +6,6 @@
 
 <div class="container">
     <%@ include file="include/menu.jsp" %>
-    <p>Cmd CreateVenue: ${message}</p>
 
     <form class="form-horizontal" action="do?command=createVenue" method="post">
         <fieldset>

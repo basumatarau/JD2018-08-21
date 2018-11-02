@@ -83,7 +83,7 @@ public class VenueDAO extends DAO implements InterfaceDAO<Venue> {
         try(Connection connection = ConnectionCreator.getConnection();
             Statement statement = connection.createStatement()){
 
-            String sqlQuery = String.format("SELECT * FROM `Venues` %s ;", sqlWHERE);
+            String sqlQuery = String.format("SELECT * FROM `Venues` %s ", sqlWHERE);
             ResultSet resultSet = statement.executeQuery(sqlQuery);
 
             while(resultSet.next()){
@@ -170,5 +170,21 @@ public class VenueDAO extends DAO implements InterfaceDAO<Venue> {
                 );
             }
         }
+    }
+
+    public long getCount(String sqlWhere) throws SQLException {
+        long result=1L;
+
+        try(Connection connection = ConnectionCreator.getConnection();
+            Statement statement = connection.createStatement()){
+
+            String sqlQuery = String.format("SELECT COUNT(*) AS count FROM `Venues` %s ;", sqlWhere);
+            ResultSet resultSet = statement.executeQuery(sqlQuery);
+            if(resultSet.next()) {
+                result = resultSet.getLong("count");
+            }
+        }
+
+        return result;
     }
 }

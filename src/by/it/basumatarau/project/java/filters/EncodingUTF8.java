@@ -1,4 +1,4 @@
-package by.it.basumatarau.project.java.controller;
+package by.it.basumatarau.project.java.filters;
 
 import javax.servlet.*;
 import java.io.IOException;

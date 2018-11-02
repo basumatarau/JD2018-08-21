@@ -18,26 +18,19 @@
 
         <ul class="navbar-nav">
             <c:if test = "${user != null && user.roles_Id == 2}">
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Admin">Admin</a>
-                </li>
+                <pjtags:navbartile command="Admin" label="Admin page"/>
             </c:if>
+            <pjtags:navbartile command="ListVenues" label="Go to venues"/>
 
-            <li class="nav-item">
-                <a class="nav-link" href="do?command=ListVenues">List Venues</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="do?command=Reset">Reset</a>
-            </li>
+            <form class="navbar-form navbar-left" action="do?command=Reset" method="post">
+                <button id="resetbutton" name="resetbutton" class="btn btn-warning">
+                    <b>RESET</b>
+                </button>
+            </form>
 
             <c:if test = "${user != null}">
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=Profile">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="do?command=CreateVenue">Create Venue</a>
-                </li>
+                <pjtags:navbartile command="Profile" label="Profile"/>
+                <pjtags:navbartile command="CreateVenue" label="New Venue"/>
             </c:if>
         </ul>
 

@@ -34,7 +34,6 @@ public class CmdProfile extends Cmd {
                 return Action.LOGIN.command;
             }
 
-            //to be fixed...
             if(request.getParameter("deleteVenue")!=null){
                 Long id = FormHandler.getLong(request, "venueID");
                 String venueName = FormHandler.getString(request, "venueName");
@@ -56,20 +55,42 @@ public class CmdProfile extends Cmd {
             }
         }
 
-        String sqlStatement = String.format(" WHERE Venues.Users_ID = %d ", user.getId());
+        int itmesPerPage = 10;
+        int startPage = 1;
+        if (request.getParameter("startPage") != null) {
+            startPage = FormHandler.getInt(request, "startPage");
+        }
+
+        String getCountQuery=String.format(" WHERE `Venues`.`Users_ID` = %d ",
+                user.getId());
+
+        String sqlQuery = String.format(" WHERE `Venues`.`Users_ID` = %d LIMIT %s,10 ",
+                user.getId(),
+                (startPage-1)*10);
+
         if(DAO.getDAO().role.read(user.getRoles_Id()).getRole().equalsIgnoreCase("admin")){
-            sqlStatement = "";
+            getCountQuery="";
+            sqlQuery = String.format(" LIMIT %s,10 ",(startPage-1)*10);
+        }
+        Long count = DAO.getDAO().venue.getCount(getCountQuery);
+
+        if(startPage<1||startPage-1>count/itmesPerPage){
+            startPage=1;
         }
 
         List<Venue> usrVenues = new ArrayList<>();
         List<Place> venuePlaces = new ArrayList<>();
 
-        DAO.getDAO().venue.getAllDetailed(sqlStatement, usrVenues, venuePlaces);
+        DAO.getDAO().venue.getAllDetailed(sqlQuery, usrVenues, venuePlaces);
 
-
-        request.setAttribute("userName", user.getLogin());
         request.setAttribute("userVenues", usrVenues);
         request.setAttribute("venuePlaces", venuePlaces);
+
+        request.setAttribute("itemsPerPage", itmesPerPage);
+        request.setAttribute("totalCount", count);
+        request.setAttribute("currentPage", startPage);
+
+
 
         return null;
     }
