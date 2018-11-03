@@ -57,6 +57,7 @@ public class CmdProfile extends Cmd {
             if(request.getParameter("updateProfile")!=null){
                 String login = FormHandler.getString(request, "login");
                 String email = FormHandler.getString(request, "email");
+
                 Integer roles_id = FormHandler.getInt(request, "roles_id");
                 String password = FormHandler.getString(request, "password");
 
