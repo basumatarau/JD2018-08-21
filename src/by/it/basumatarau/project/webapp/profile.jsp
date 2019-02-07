@@ -22,6 +22,8 @@
                     <div class="col-md-3">
                         <input id="email" class="form-control input-md" name="email" value="${user.email}"/>
                     </div>
+
+                    <c:if test = "${user != null && user.roles_Id == 1}">
                     <div class="col-md-2">
                         <select class="form-control input-md" id="roles_id" name="roles_id">
                             <c:forEach items="${roles}" var="role">
@@ -31,6 +33,8 @@
                             </c:forEach>
                         </select>
                     </div>
+                    </c:if>
+
                     <div class="col-md-2">
                         <button id="updateProfile" value="updateProfile" name="updateProfile" class="btn btn-success">
                             Update Profile
@@ -76,6 +80,7 @@
                         <td>${venue.openingDeteTime}</td>
                         <input name="fee" type="hidden" value="${venue.fee}"/>
                         <td>${venue.fee}</td>
+
                         <c:forEach items="${venuePlaces}" var="place">
                             <c:if test = "${place.id == venue.id}">
                                 <input name="placeName" type="hidden" value="${venue.users_Id}"/>
@@ -84,6 +89,7 @@
                                 <td>${place.address}</td>
                             </c:if>
                         </c:forEach>
+
                         <td>
                             <button id="deleteVenue" value="deleteVenue" name="deleteVenue"
                             class="btn btn-danger">
