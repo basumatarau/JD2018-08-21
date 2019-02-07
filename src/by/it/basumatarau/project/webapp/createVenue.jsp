@@ -7,7 +7,19 @@
 <div class="container">
     <%@ include file="include/menu.jsp" %>
 
-    <form class="form-horizontal" action="do?command=createVenue" method="post">
+    <script type="text/javascript">
+        <%@include file="/js/createVenueFormBootstrapValidation.js" %>
+    </script>
+
+    <script type="text/javascript">
+        <%@include file="/js/createVenueFormValidation.js" %>
+    </script>
+
+    <script type="text/javascript">
+        <%@include file="/js/dateTimePicker.js" %>
+    </script>
+
+    <form name="createVenueForm" id="createVenueForm" class="form-horizontal" class="needs-validation" action="do?command=createVenue" onsubmit="return validateFormCreateVenue()" method="post">
         <fieldset>
 
             <!-- Form Name -->
@@ -17,9 +29,13 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="nameinput">Venue Name</label>
               <div class="col-md-4">
-              <input id="nameinput" name="nameinput" type="text" placeholder="" value="testVenueName" class="form-control input-md" required="">
-
+              <input id="nameinput" name="nameinput" type="text" placeholder="" value="testVenueName" class="form-control input-md">
               </div>
+
+              <div class="col-md-4 control-label" id="nameinputWarning" style="display: none;">
+                input a name for a Venue
+              </div>
+
             </div>
 
             <!-- Text input-->
@@ -62,14 +78,9 @@
             <div class="form-group">
                 <label class="col-md-4 control-label" for="datetimeinput">Date and time</label>
                 <div class="col-md-4">
-                    <div class='input-group date' id='datetimepicker1' showMeridian="false" language="ru">
-                        <script type="text/javascript">
-                                $(function () {
-                                    $('#datetimepicker1').datetimepicker({
-                                            format: 'YYYY-MM-DD HH:mm:ss',
-                                        });
-                                });
-                        </script>
+                    <div class='input-group date' id='createVenueDatetimePicker' showMeridian="false" language="ru">
+
+
                         <input id="datetimeinput" name="datetimeinput" type="text" class="form-control input-md" value="2018-11-06 12:25:00" required=""/>
                         <div class="input-group-addon">
                             <div class="glyphicon glyphicon-calendar"></div>
@@ -82,7 +93,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="venuesubmit"></label>
               <div class="col-md-4">
-                <button id="venuesubmit" name="venuesubmit" class="btn btn-primary">post new venue</button>
+                <button id="venuesubmit" type="submit" name="venuesubmit" class="btn btn-primary">post new venue</button>
               </div>
             </div>
 

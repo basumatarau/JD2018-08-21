@@ -35,15 +35,19 @@
                     <div class="col-md-3">
                         <input id="email" class="form-control input-md" name="email" value="${user.email}"/>
                     </div>
+
                     <div class="col-md-2">
                         <select class="form-control input-md" id="roles_id" name="roles_id">
+
                             <c:forEach items="${roles}" var="role">
                                 <option class="form-control input-md" value="${role.id}" role=${role.id} ${role.id==user.roles_Id?"selected":""}>
                                     ${role.role}
                                 </option>
                             </c:forEach>
+
                         </select>
                     </div>
+
                     <div class="col-md-1">
                         <button id="updateUser" value="updateUser" name="updateUser" class="btn btn-success">
                             Update

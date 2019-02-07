@@ -16,9 +16,10 @@ public class ConnectionCreator implements DBConnectionData {
 
     private static Connection connection;
 
-    public static Connection getConnection() throws SQLException {
+    //synchronized?!
+    public synchronized static Connection getConnection() throws SQLException {
         if(connection==null || connection.isClosed()) {
-            connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
+            connection = DriverManager.getConnection(URL_CONTEXT, USER_DB, PASSWORD_DB);
             System.out.println("connection created...");
         }
         return connection;

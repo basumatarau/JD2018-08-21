@@ -4,15 +4,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import by.it.basumatarau.project.java.connection.DBConnectionData;
+
 
 public class DB_init {
 
-    private static String URL_DB = "jdbc:mysql://127.0.0.1:2016/" +
-            "?useUnicode=true&characterEncoding=UTF-8";
-    private static String USER_DB = "root";
-    private static String PASSWORD_DB = "";
+    private static String URL_DB;
+    private static String USER_DB;
+    private static String PASSWORD_DB;
 
     static {
+        URL_DB = DBConnectionData.URL_DB;
+        USER_DB = DBConnectionData.USER_DB;
+        PASSWORD_DB = DBConnectionData.PASSWORD_DB;
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
