@@ -3,11 +3,16 @@
 <html lang="en">
 <%@ include file="include/head.htm" %>
 <body>
+
+<script type="text/javascript">
+    <%@include file="/js/signUpFormValidation.js" %>
+</script>
+
 <div class="container">
 
     <%@ include file="include/menu.jsp" %>
     ${message}
-    <form class="form-horizontal" action="do?command=SignUp" method="post">
+    <form class="form-horizontal" id="singUpForm" action="do?command=SignUp" method="post">
         <fieldset>
 
             <!-- Form Name -->
