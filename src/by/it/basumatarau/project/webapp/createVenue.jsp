@@ -8,10 +8,6 @@
     <%@ include file="include/menu.jsp" %>
 
     <script type="text/javascript">
-        <%@include file="/js/createVenueFormBootstrapValidation.js" %>
-    </script>
-
-    <script type="text/javascript">
         <%@include file="/js/createVenueFormValidation.js" %>
     </script>
 
@@ -19,7 +15,7 @@
         <%@include file="/js/dateTimePicker.js" %>
     </script>
 
-    <form name="createVenueForm" id="createVenueForm" class="form-horizontal" class="needs-validation" action="do?command=createVenue" onsubmit="return validateFormCreateVenue()" method="post">
+    <form name="createVenueForm" id="createVenueForm" class="form-horizontal" class="needs-validation" action="do?command=createVenue" method="post">
         <fieldset>
 
             <!-- Form Name -->
@@ -31,11 +27,6 @@
               <div class="col-md-4">
               <input id="nameinput" name="nameinput" type="text" placeholder="" value="testVenueName" class="form-control input-md">
               </div>
-
-              <div class="col-md-4 control-label" id="nameinputWarning" style="display: none;">
-                input a name for a Venue
-              </div>
-
             </div>
 
             <!-- Text input-->
@@ -43,7 +34,6 @@
               <label class="col-md-4 control-label" for="descriptioninput">Venue Description</label>
               <div class="col-md-4">
               <input id="descriptioninput" name="descriptioninput" type="text" placeholder="" value="testDescription" class="form-control input-md" required="">
-
               </div>
             </div>
 
