@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
     $('#createVenueForm').bootstrapValidator({
         fields: {
             nameinput: {

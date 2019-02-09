@@ -12,6 +12,7 @@
 
     <%@ include file="include/menu.jsp" %>
     ${message}
+
     <form class="form-horizontal" id="singUpForm" action="do?command=SignUp" method="post">
         <fieldset>
 
@@ -49,7 +50,7 @@
             <div class="form-group">
               <label class="col-md-4 control-label" for="signupsubmit"></label>
               <div class="col-md-4">
-                <button id="signupsubmit" name="signupsubmit" class="btn btn-primary">Sing me up</button>
+                <button id="signupsubmit" name="signupsubmit" type="submit" class="btn btn-primary">Sing me up</button>
               </div>
             </div>
 
